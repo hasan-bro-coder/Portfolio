@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
+@import "tailwindcss";
+
+.inc {
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark light;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #101010;
+
+  margin: 0px;
+  padding: 0px;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-black: #101010;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+/* .t{
+  transition: all 100ms;
+} */
+
+.skills {
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+  grid-template-rows: repeat(3, 100vh);
+  grid-column-gap: 3px;
+  grid-row-gap: 3px;
+}
+
+.skill-main{
+  rotate: x -180deg; 
+}
+
+.skill-con{
+  padding-top: 35vh;
+}
+
+
+.skill{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.g1 {
+  grid-area: 1 / 1 / 2 / 2;
+  z-index: 6;
+}
+.g2 {
+  grid-area: 2 / 1 / 3 / 2;
+  z-index: 5;
+}
+.g3 {
+  grid-area: 3 / 1 / 4 / 2;
+  z-index: 4;
+}
+.g4 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.g5 {
+  grid-area: 2 / 3 / 3 / 4;
+}
+.g6 {
+  grid-area: 3 / 3 / 4 / 4;
+}
+.g7 {
+  grid-area: 1 / 2 / 4 / 3;
+}
+
+.btn {
+  transition: all 500ms !important;
+  @apply border-[1px] border-white text-white py-2 px-4 rounded-md;
+}
+.btn:hover {
+  @apply bg-white border-[1px] border-white text-black py-2 px-4 rounded-md;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        color-scheme: dark;
+        padding: 0;
+        margin: 0;
+      }
+      .con {
+        width: 100vw;
+        height: 200vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .card1 {
+        width: 100vw;
+        height: 100vh;
+      }
+      .card2 {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <div class="con">
+      <div class="card1">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. At aliquid
+          illum eius autem magnam sapiente reprehenderit laudantium ipsam
+          temporibus, quae nesciunt voluptate possimus dolorum, adipisci
+          maiores, omnis debitis? Consectetur, nobis.
+        </p>
+      </div>
+      <div class="card2">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. At aliquid
+          illum eius autem magnam sapiente reprehenderit laudantium ipsam
+          temporibus, quae nesciunt voluptate possimus dolorum, adipisci
+          maiores, omnis debitis? Consectetur, nobis.
+        </p>
+      </div>
+    </div>
+   
+    <script defer>
+      // use a script tag or an external JS file
+      document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(ScrollTrigger);
+        // gsap code here!
+      });
+
+      for (let i = 1; i < 2; i++) {
+        gsap.to(".card"+i, {
+          scrollTrigger: {
+            trigger: ".card" + i,
+            pin: true,
+            markers: true,
+            scrub: 1,
+            // end: () =>
+            //   "bottom-=" +
+            //   document.querySelector(".card" + i + " .skill").clientHeight +
+            //   "- 10%",
+            // window.innerHeight * 0.35
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
