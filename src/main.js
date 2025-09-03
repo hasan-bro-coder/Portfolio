@@ -17,38 +17,49 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 AOS.init();
 
-for (let i = 1; i < 3; i++) {
+for (let i = 1; i < 4; i++) {
   console.log(i);
-  
-  gsap.to(".g" + i + " .skill-con", {
+
+  // gsap.set(gsap.utils.toArray(".skill-con"), { y: -35 });
+  gsap.to(".g" + i, {
     scrollTrigger: {
       trigger: ".g" + i,
       pin: true,
-      markers: true,
-      scrub: 1,
-      end: ".skills"
+      // markers: true,
+      // scrub: 1,
+      // end: ".skills"
       // () =>
-        // "bottom-=" + dcument.querySelector(".g" + i + " .skill").clientHeight + "- 10%",
+      // "bottom-=" + dcument.querySelector(".g" + i + " .skill").clientHeight + "- 10%",
 
       // window.innerHeight * 0.35
     },
   });
+  // gsap.to(".g" + i + " .skill", {
+  //   scrollTrigger: {
+  //     trigger: ".g" + i,
+  //     markers: true,
+  //     start: "top center",
+  //     scrub: 1,
+  //   },
+  //   rotateX: 0,
+  // });
 }
-// gsap.to(".g2 .skill-con", {
+
+// gsap.to(".project-con", {
 //   scrollTrigger: {
-//     trigger: ".g2",
+//     trigger: ".project-con",
 //     pin: true,
 //     markers: true,
-//     scrub: 1,
-//     end: "65%",
 //   },
 // });
-// gsap.to(".g3 .skill-con", {
-//   scrollTrigger: {
-//     trigger: ".g3",
-//     pin: true,
-//     markers: true,
-//     scrub: 1,
-//     end: "65%",
-//   },
-// });
+
+gsap.to(".con", {
+  scrollTrigger: {
+    trigger: ".project-con",
+    pin: true,
+    markers: true,
+    scrub: true,
+    end: ()=> "bottom+="+window.innerHeight * 2
+  },
+  x: () => -window.innerWidth * 2,
+});

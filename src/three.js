@@ -19,8 +19,8 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animate);
 // renderer.setPixelRatio(window.devicePixelRatio);
-const geometry = new THREE.SphereGeometry(48, 64*2, 32*2);
-// new THREE.TorusGeometry( 15, 5, 16, 100 );
+const geometry = new THREE.SphereGeometry(48, 64 * 2, 32 * 2);
+// new THREE.TorusGeometry(15, 5, 16, 100);
 // new THREE.TorusKnotGeometry( 15,3,100,16,1,1 );
 // new THREE.DodecahedronGeometry(15,5)
 const material = new THREE.MeshStandardMaterial({
@@ -29,8 +29,6 @@ const material = new THREE.MeshStandardMaterial({
   flatShading: true,
   color: 0xffffff,
   wireframe: true,
-  // roughness:0.3,
-  // metalness: 0.5
   // simplify: false, // Remove some edges from wireframes
   // fill: "#00ff00", // Color of the inside of the wireframe
   // fillMix: 0, // Mix between the base color and the Wireframe 'fill'. 0 = base; 1 = wireframe
@@ -83,8 +81,8 @@ pointLight.position.set(100, 0, 100);
 // const ambientLight = new THREE.AmbientLight(0xffffff);
 // scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(50, 0, 50);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+directionalLight.position.set(100, 0, 100);
 
 // const lightHelper = new THREE.PointLightHelper(pointLight);
 // scene.add(pointLight, lightHelper);
@@ -97,14 +95,32 @@ controls.enableDamping = true;
 controls.enablePan = false;
 controls.enableZoom = false;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 3;
+controls.autoRotateSpeed = -1;
 
 camera.position.z = 120;
 
+renderer.shadowMap.enabled = true;
+sphere.castShadow = true;
+
+let angle = 0;
 function animate() {
+  // directionalLight.position.set(100, 0, 100);
+  angle += 0.01; // speed
+  const radius = 100;
+  directionalLight.position.set(
+    Math.cos(angle) * radius,
+    0,
+    Math.sin(angle) * radius
+  );
   renderer.render(scene, camera);
   controls.update();
 }
+
+window.addEventListener("resize", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
 // import * as THREE from "three";
 

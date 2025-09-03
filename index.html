@@ -7,7 +7,7 @@
     <title>Hasan's Portfolio</title>
   </head>
   <body>
-    <div class="inc h-[400vh]">
+    <div class="inc h-[1300vh]">
       <nav
         class="transition duration-1000 fixed w-screen h-12 flex g-2 items-center justify-between px-4 py-2 flex-wrap z-20"
       >
@@ -34,7 +34,7 @@
         </div>
       </nav>
 
-      <main class="w-screen h-screen main mb-10">
+      <main class="w-screen h-screen main mb-30">
         <!-- <h1 class="main-text">HI IM HASAN</h1> -->
         <div class="about absolute bottom-20 left-10 flex flex-col gap-4">
           <h1 class="text-6xl">HI IM HASAN</h1>
@@ -76,11 +76,11 @@
         <canvas class="canvas"> </canvas>
       </main>
 
-      <div class="flex flex-col items-center justify-center h-full">
+      <div class="flex flex-col items-center justify-center h-fit mb-80">
         <h1 class="text-8xl" data-aos="fade-up">Skills</h1>
-        <div class="flex flex-col w-[80vw] h-full">
+        <div class="flex flex-col w-[95vw] h-[400vh]">
           <div class="skills">
-            <div class="g1 skill-con" ref="{g1}">
+            <div class="g1 skill-con">
               <div class="skill">
                 <h1 class="text-6xl">Web Development</h1>
                 <div>
@@ -119,18 +119,47 @@
                 <button class="btn">See projects</button>
               </div>
             </div>
-            <div class="g7"></div>
+            <div class="g7 flex justify-center">
+              <div class="h-full w-0.5 bg-white"></div>
+            </div>
           </div>
         </div>
       </div>
-      
-      <div class="project-con">
-        <h1 class="text-8xl" data-aos="fade-up">Projects</h1>
 
+      <div
+        class="project-con gap-10 flex flex-col "
+      >
+        <h1 class="text-8xl text-center" data-aos="fade-up">Projects</h1>
+        <div class="con flex w-[300vw] justify-around h-[80vh]">
+          <div class="p1 project w-[70vw] h-[70vh] aspect-video shrink-0 rounded-2xl flex justify-center flex-col gap-2">
+            <img src="/projects/pagecord.png" alt="" class="object-cover rounded-2xl"/>
+            <h1 class="text-xl">pagecord(light weight discord clone)</h1>
+          </div>
+           <div class="p2 project w-[70vw] h-[70vh] aspect-video shrink-0 rounded-2xl flex justify-center flex-col gap-2">
+            <img src="/projects/bronotes.png" alt="" class="object-cover rounded-2xl"/>
+            <h1 class="text-xl">bro notes (custom note app)</h1>
+          </div>
+           <div class="p2 project w-[70vw] h-[70vh] aspect-video shrink-0 rounded-2xl flex justify-center flex-col gap-2">
+            <img src="/projects/smartoutfit.png" alt="" class="object-cover rounded-2xl"/>
+            <h1 class="text-xl">smartoutfit (ecommerce site)</h1>
+          </div>
+
+          
+        </div>
       </div>
-   
+
+      <div class="">
+        contact me
+      </div>
+      <!-- <div class="flex">
+        <div class="bg-[#131313] shrink-0 rounded-2xl border-1 border-white">
+            <img src="" alt="" />
+            <h1>ecommerce site</h1>
+          </div>
+      </div> -->
+
     </div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.js" defer></script>
     <script type="module" src="/src/three.js" defer></script>
   </body>
 </html>
