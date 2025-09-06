@@ -4,7 +4,7 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-  75,
+  25,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
@@ -19,7 +19,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animate);
 // renderer.setPixelRatio(window.devicePixelRatio);
-const geometry = new THREE.SphereGeometry(48, 64 * 2, 32 * 2);
+const geometry = new THREE.SphereGeometry(3, 64 * 2, 32 * 2);
 // new THREE.TorusGeometry(15, 5, 16, 100);
 // new THREE.TorusKnotGeometry( 15,3,100,16,1,1 );
 // new THREE.DodecahedronGeometry(15,5)
@@ -81,13 +81,13 @@ pointLight.position.set(100, 0, 100);
 // const ambientLight = new THREE.AmbientLight(0xffffff);
 // scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-directionalLight.position.set(100, 0, 100);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+// directionalLight.position.set(100, 10, 100);
 
 // const lightHelper = new THREE.PointLightHelper(pointLight);
 // scene.add(pointLight, lightHelper);
 const lightHelper = new THREE.PointLightHelper(directionalLight);
-scene.add(directionalLight, lightHelper);
+scene.add(directionalLight);
 
 const controls = new OrbitControls(camera, document.querySelector(".canvas"));
 
@@ -97,7 +97,7 @@ controls.enableZoom = false;
 controls.autoRotate = true;
 controls.autoRotateSpeed = -1;
 
-camera.position.z = 120;
+camera.position.z = 20;
 
 renderer.shadowMap.enabled = true;
 sphere.castShadow = true;
@@ -116,10 +116,28 @@ function animate() {
   controls.update();
 }
 
+// Customizable sphere size based on screen width
+function getSphereRadius() {
+  if (window.innerWidth < 600) return 1.5; // Small screens
+  if (window.innerWidth < 1200) return 2.5; // Medium screens
+  return 3; // Large screens
+}
+
+// Function to update sphere geometry size
+function updateSphereSize() {
+  const newGeometry = new THREE.SphereGeometry(getSphereRadius(), 64 * 2, 32 * 2);
+  sphere.geometry.dispose();
+  sphere.geometry = newGeometry;
+}
+
+// Initial sphere size
+updateSphereSize();
+
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  updateSphereSize();
 });
 
 // import * as THREE from "three";
