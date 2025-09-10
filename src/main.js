@@ -15,40 +15,245 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 AOS.init();
 
-let split = SplitText.create("main .name", {
-  type: "chars",
+// let split = SplitText.create("main .name", {
+//   type: "chars",
+// });
+
+document.querySelector(
+  ".footer-text"
+).innerHTML = `&copy; Made by: Hasanur Rahman ${new Date().getFullYear()}`;
+
+function animateText(element) {
+  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+  let revealIndex = 0;
+  const originalText = element.dataset.text;
+  const lines = originalText.split("<br>");
+
+  const intervalId = setInterval(() => {
+    element.innerHTML = lines
+      .map((line, lineIdx) =>
+        Array.from(line)
+          .map((char, charIdx) => {
+            // Exception: keep 🇧🇩 (Bangladesh flag emoji) intact
+            if (char === "🇧🇩") return "🇧🇩";
+            if (char === " ") return " ";
+            if (char === ":") return ":";
+            if (charIdx < revealIndex) return Array.from(line)[charIdx];
+            return charset[Math.floor(Math.random() * charset.length)];
+          })
+          .join("")
+      )
+      .join("<br>");
+    if (revealIndex > Math.max(...lines.map((line) => line.length))) {
+      clearInterval(intervalId);
+    }
+    revealIndex += 1 / 2;
+  }, 30);
+}
+
+function assignAnimation(selector) {
+  document.querySelectorAll(selector).forEach((element) => {
+    if (!element.dataset.text) {
+      element.dataset.text = element.innerHTML;
+    }
+    element.onmouseover = () => animateText(element);
+
+    // Animate when element scrolls into view
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateText(element);
+            obs.unobserve(element);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(element);
+  });
+}
+
+assignAnimation("main ul li");
+assignAnimation(".about ul li");
+assignAnimation(".about h2 span");
+assignAnimation(".contact p");
+
+function addScrollSkew(el, options = {}) {
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  let resetTimeout;
+
+  const maxSkew = options.maxSkew || 15; // maximum tilt angle
+  const speedFactor = options.speedFactor || 0.4; // sensitivity
+  const resetDelay = options.resetDelay || 150; // ms to reset
+
+  function updateSkew() {
+    const currentScrollY = window.scrollY;
+    const scrollSpeed = currentScrollY - lastScrollY;
+
+    // clamp skew value
+    const skewValue = Math.max(
+      -maxSkew,
+      Math.min(maxSkew, scrollSpeed * speedFactor)
+    );
+
+    el.style.transform = `skewY(${skewValue}deg)`;
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+
+    clearTimeout(resetTimeout);
+    resetTimeout = setTimeout(() => {
+      el.style.transform = `skewY(0deg)`;
+    }, resetDelay);
+  }
+
+  lenis.on("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateSkew);
+      ticking = true;
+    }
+  });
+}
+
+addScrollSkew(document.querySelector(".pfp"), {
+  maxSkew: 10,
+  speedFactor: 0.1,
+  resetDelay: 300,
 });
 
-document.querySelector(".footer-text").innerHTML = `&copy; ${new Date().getFullYear()} Hasanur Rahman. Site Made using Vanilla js and css.`;
+let links = gsap.utils.toArray(".links a");
 
-function hackerAnimation(el, onend) {
-  let ll = "ABDEFGHIJKLMNOPQRSTUVWXYUZ1234567890"
-  let ee = 0;
-  document.querySelectorAll(el).forEach(async (element) => {
-    let i = "HASAN";
-    let ii = setInterval(() => {
-      element.innerHTML = i
-        .split("")
-        .map((le, ind) => {
-          if (le == " ") {
-            return ""
+document.querySelector(".up").onclick = () => {
+  gsap.to(window, { duration: 7, scrollTo: 0 });
+};
+
+// gsap.set(links,{y:100})
+// gsap.to(links,{
+//   scrollTrigger:".about",
+//   stagger: 0.5,
+//   duration:1,
+//   y: 0
+// })
+
+gsap.to(".titles", {
+  scrollTrigger: {
+    trigger: ".con",
+    pin: true,
+    start: "top top",
+
+    // markers: true,
+    // scrub: true,
+    // end: () => "bottom+=" + window.innerHeight * 3,
+    onUpdate: ({ progress }) => {
+      // const progress = ScrollTrigger.getById(".con").progress;
+      const titles = document.querySelectorAll(".titles .title");
+      titles.forEach((title, i) => {
+        let start = i * 0.25;
+        let end = (i + 1) * 0.25;
+        let scale = 1;
+        let opacity = 0.05;
+        if (progress + 0.15 >= start && progress + 0.15 < end) {
+          console.log(progress, 400 + (progress - start) * 2000);
+
+          // Scale increases at start, peaks at middle, then decreases to normal at end
+          const localProgress = (progress + 0.15 - start) / (end - start);
+          scale = 400 + 400 * Math.sin(localProgress * Math.PI); // 400 to 650 to 400
+          opacity = 1 * Math.sin(localProgress * Math.PI); // 400 to 650 to 400
+        } else {
+          scale = 400;
+        }
+        title.style.fontWeight = scale;
+        title.style.opacity = opacity;
+
+        // transform = `scale(${scale})`;
+      });
+    },
+  },
+  // x: () => -window.innerWidth * 3,
+});
+
+gsap.to(".images", {
+  scrollTrigger: {
+    trigger: ".con",
+    // pin: true,
+    markers: true,
+    scrub: true,
+    start: "top top",
+    snap: {
+      snapTo: (value) => {
+        // Snap to start (0), end (1), or every window.innerHeight increment
+        const images = document.querySelector(".images");
+        const scrollHeight = images.scrollHeight;
+        const increments = [0, 1];
+        if (scrollHeight > 0) {
+          const numSteps = Math.floor(scrollHeight / window.innerHeight);
+          for (let i = 1; i <= numSteps; i++) {
+            increments.push((i * window.innerHeight) / scrollHeight);
           }
-          if (ind < ee) {
-            return i[ind];
-          }
-          return ll[Math.floor(Math.random() * ll.length)];
-        })
-        .join("");
-      if (ee >= i.length + 1) {
-        onend()
-        clearInterval(ii);
-        ee = 0;
-      }
-      ee += 1 / 12;
-     
-    }, 30);
-  })
-}
+        }
+        // Find the closest increment
+        return increments.reduce((prev, curr) =>
+          Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+        );
+      },
+      duration: 0.3,
+      delay: 0.05,
+      ease: "power1.inOut",
+    },
+    // end: () => "bottom+=" + window.innerHeight * 3,
+  },
+  y: () => -window.innerHeight * 3,
+});
+
+// document.querySelectorAll(".images img").forEach((el)=>{
+//   gsap.to(el,{
+//     scrollTrigger:{
+//       trigger:el,
+//       markers: true,
+//       snap:true
+//     }
+//   })
+
+// })
+// gsap.to(".images", {
+//   scrollTrigger: {
+//     trigger: ".con",
+//     // pin: true,
+//     markers: true,
+//     scrub: true,
+//     start:"top top",
+//     // end: () => "bottom+=" + window.innerHeight * 3,
+
+//   },
+//   y: () => -window.innerHeight * 3,
+// });
+
+// addScrollSkew(document.querySelector(".pfp"));
+
+// document.querySelectorAll(".con div").forEach((element) => {
+//   addScrollSkew(element,{
+//     maxSkew:5,
+//     resetDelay: 100,
+//     speedFactor: 0.3
+//   });
+// });
+
+// addScrollSkew(document.querySelector(".tilt"), {
+// speedFactor: 0.8,
+// maxSkew: 15,
+// });
+// let pfp = document.querySelector(".pfp")
+// window.onscroll = ()=>{
+//   pfp.style.skew = "10deg"
+// }
+
+// textAnimation("main ul li",()=>{})
+// document.querySelectorAll("main ul li").forEach((el) => {
+//   el.onmouseover = () => textAnimation(el);
+// });
+
 // for (let i = 1; i < 4; i++) {
 //   console.log(i);
 
@@ -85,13 +290,13 @@ function hackerAnimation(el, onend) {
 //   },
 // });
 
-gsap.to(".con", {
-  scrollTrigger: {
-    trigger: ".project-con",
-    pin: true,
-    markers: true,
-    scrub: true,
-    end: () => "bottom+=" + window.innerHeight * 3,
-  },
-  x: () => -window.innerWidth * 3,
-});
+// gsap.to(".con", {
+//   scrollTrigger: {
+//     trigger: ".project-con",
+//     pin: true,
+//     markers: true,
+//     scrub: true,
+//     end: () => "bottom+=" + window.innerHeight * 3,
+//   },
+//   x: () => -window.innerWidth * 3,
+// });
