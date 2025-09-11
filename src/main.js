@@ -26,25 +26,27 @@ document.querySelector(
 function animateText(element) {
   const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
   let revealIndex = 0;
-  const originalText = element.dataset.text;
-  const lines = originalText.split("<br>");
+  const originalText = element.dataset.text.split("");
+  // const lines = originalText.split("<br>");
 
   const intervalId = setInterval(() => {
-    element.innerHTML = lines
-      .map((line, lineIdx) =>
-        Array.from(line)
-          .map((char, charIdx) => {
-            // Exception: keep 🇧🇩 (Bangladesh flag emoji) intact
-            if (char === "🇧🇩") return "🇧🇩";
-            if (char === " ") return " ";
-            if (char === ":") return ":";
-            if (charIdx < revealIndex) return Array.from(line)[charIdx];
-            return charset[Math.floor(Math.random() * charset.length)];
-          })
-          .join("")
-      )
-      .join("<br>");
-    if (revealIndex > Math.max(...lines.map((line) => line.length))) {
+    element.innerHTML = originalText
+      // lines
+      // .map((line, lineIdx) =>
+      // Array.from(line)
+      .map((char, charIdx) => {
+        // Exception: keep 🇧🇩 (Bangladesh flag emoji) intact
+        if (char === "🇧🇩") return "🇧🇩";
+        if (char === " ") return " ";
+        if (char === ":") return ":";
+        if (charIdx < revealIndex) return originalText[charIdx];
+        return charset[Math.floor(Math.random() * charset.length)];
+      })
+      .join("");
+    // )
+    // Scale increases at start, peaks at middle, then decreases to normal at end
+    // .join("<br>");
+    if (revealIndex > originalText.length) {
       clearInterval(intervalId);
     }
     revealIndex += 1 / 2;
@@ -77,7 +79,7 @@ function assignAnimation(selector) {
 assignAnimation("main ul li");
 assignAnimation(".about ul li");
 assignAnimation(".about h2 span");
-assignAnimation(".contact p");
+assignAnimation(".contact a");
 
 function addScrollSkew(el, options = {}) {
   let lastScrollY = window.scrollY;
@@ -128,7 +130,9 @@ let links = gsap.utils.toArray(".links a");
 document.querySelector(".up").onclick = () => {
   gsap.to(window, { duration: 7, scrollTo: 0 });
 };
-
+document.querySelector(".contact-link").onclick = () => {
+  gsap.to(window, { duration: 2, scrollTo: ".contact" });
+};
 // gsap.set(links,{y:100})
 // gsap.to(links,{
 //   scrollTrigger:".about",
@@ -155,9 +159,6 @@ gsap.to(".titles", {
         let scale = 1;
         let opacity = 0.05;
         if (progress + 0.15 >= start && progress + 0.15 < end) {
-          console.log(progress, 400 + (progress - start) * 2000);
-
-          // Scale increases at start, peaks at middle, then decreases to normal at end
           const localProgress = (progress + 0.15 - start) / (end - start);
           scale = 400 + 400 * Math.sin(localProgress * Math.PI); // 400 to 650 to 400
           opacity = 1 * Math.sin(localProgress * Math.PI); // 400 to 650 to 400
@@ -205,6 +206,32 @@ gsap.to(".images", {
     // end: () => "bottom+=" + window.innerHeight * 3,
   },
   y: () => -window.innerHeight * 3,
+});
+
+const VITE_URL = import.meta.env.VITE_URL;
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    service: form.service.value,
+    message: form.message.value,
+  };
+  const payload = {
+    content: `New contact form submission:\nName: ${data.name}\nEmail: ${data.email}\nService: ${data.service}\nMessage: ${data.message}`,
+  };
+  try {
+    await fetch(VITE_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    form.reset();
+    alert("Message is sent! we will responce back soon");
+  } catch {
+    alert("Failed to send message.");
+  }
 });
 
 // document.querySelectorAll(".images img").forEach((el)=>{

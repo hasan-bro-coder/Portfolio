@@ -16,9 +16,10 @@ const renderer = new THREE.WebGLRenderer({
   antialias: true,
   depth: true,
 });
+renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
+// renderer.setSize( window.innerWidth / 4, window.innerHeight / 4 );
 renderer.setAnimationLoop(animate);
-// renderer.setPixelRatio(window.devicePixelRatio);
 const geometry = new THREE.SphereGeometry(3, 64 * 2, 32 * 2);
 // new THREE.TorusGeometry(15, 5, 16, 100);
 // new THREE.TorusKnotGeometry( 15,3,100,16,1,1 );
