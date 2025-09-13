@@ -125,6 +125,26 @@ addScrollSkew(document.querySelector(".pfp"), {
   resetDelay: 300,
 });
 
+gsap.to(".about", {
+  scrollTrigger: {
+    trigger: ".about",
+    markers: true,
+    snap: [0],
+    start: "top-=100 top",
+    end: "bottom-=260",
+    // end: "top bottom"
+  },
+});
+gsap.to(".tech-con", {
+  scrollTrigger: {
+    trigger: ".tech-con",
+    markers: true,
+    snap: [0],
+    start: "top-=100 top",
+    end: "bottom-=260",
+    // end: "top bottom"
+  },
+});
 let links = gsap.utils.toArray(".links a");
 
 document.querySelector(".up").onclick = () => {
@@ -141,71 +161,84 @@ document.querySelector(".contact-link").onclick = () => {
 //   y: 0
 // })
 
-gsap.to(".titles", {
+// gsap.to(".titles", {
+//   scrollTrigger: {
+//     trigger: ".con",
+//     pin: true,
+//     start: "top top",
+
+//     // markers: true,
+//     // scrub: true,
+//     // end: () => "bottom+=" + window.innerHeight * 3,
+//     onUpdate: ({ progress }) => {
+//       // const progress = ScrollTrigger.getById(".con").progress;
+//       const titles = document.querySelectorAll(".titles .title");
+//       titles.forEach((title, i) => {
+//         let start = i * 0.25;
+//         let end = (i + 1) * 0.25;
+//         let scale = 1;
+//         let opacity = 0.05;
+//         if (progress + 0.15 >= start && progress + 0.15 < end) {
+//           const localProgress = (progress + 0.15 - start) / (end - start);
+//           scale = 400 + 400 * Math.sin(localProgress * Math.PI); // 400 to 650 to 400
+//           opacity = 1 * Math.sin(localProgress * Math.PI); // 400 to 650 to 400
+//         } else {
+//           scale = 400;
+//         }
+//         title.style.fontWeight = scale;
+//         title.style.opacity = opacity;
+
+//         // transform = `scale(${scale})`;
+//       });
+//     },
+//   },
+//   // x: () => -window.innerWidth * 3,
+// });
+
+// gsap.to(".images", {
+//   scrollTrigger: {
+//     trigger: ".con",
+//     // pin: true,
+//     // markers: true,
+//     scrub: true,
+//     start: "top top",
+//     snap: [0, 0.25, 0.5, 0.75, 1],
+//     // snap: {
+//     //   snapTo: "img",
+//     //   // snapTo: (value) => {
+//     //   //   // Snap to start (0), end (1), or every window.innerHeight increment
+//     //   //   const images = document.querySelector(".images");
+//     //   //   const scrollHeight = images.scrollHeight;
+//     //   //   const increments = [0, 1];
+//     //   //   if (scrollHeight > 0) {
+//     //   //     const numSteps = Math.floor(scrollHeight / window.innerHeight);
+//     //   //     for (let i = 1; i <= numSteps; i++) {
+//     //   //       increments.push((i * window.innerHeight) / scrollHeight);
+//     //   //     }
+//     //   //   }
+//     //   //   // Find the closest increment
+//     //   //   return increments.reduce((prev, curr) =>
+//     //   //     Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+//     //   //   );
+//     //   // },
+//     //   duration: 0.3,
+//     //   delay: 0.05,
+//     //   ease: "power1.inOut",
+//     // },
+//     // end: () => "bottom+=" + window.innerHeight * 3,
+//   },
+//   y: () => -window.innerHeight * 3,
+// });
+
+gsap.from(".project-card", {
+  y: 50,
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.2,
   scrollTrigger: {
-    trigger: ".con",
-    pin: true,
-    start: "top top",
-
-    // markers: true,
-    // scrub: true,
-    // end: () => "bottom+=" + window.innerHeight * 3,
-    onUpdate: ({ progress }) => {
-      // const progress = ScrollTrigger.getById(".con").progress;
-      const titles = document.querySelectorAll(".titles .title");
-      titles.forEach((title, i) => {
-        let start = i * 0.25;
-        let end = (i + 1) * 0.25;
-        let scale = 1;
-        let opacity = 0.05;
-        if (progress + 0.15 >= start && progress + 0.15 < end) {
-          const localProgress = (progress + 0.15 - start) / (end - start);
-          scale = 400 + 400 * Math.sin(localProgress * Math.PI); // 400 to 650 to 400
-          opacity = 1 * Math.sin(localProgress * Math.PI); // 400 to 650 to 400
-        } else {
-          scale = 400;
-        }
-        title.style.fontWeight = scale;
-        title.style.opacity = opacity;
-
-        // transform = `scale(${scale})`;
-      });
-    },
+    trigger: "#projects",
+    start: "top 80%", // adjust as needed
   },
-  // x: () => -window.innerWidth * 3,
-});
-
-gsap.to(".images", {
-  scrollTrigger: {
-    trigger: ".con",
-    // pin: true,
-    markers: true,
-    scrub: true,
-    start: "top top",
-    snap: {
-      snapTo: (value) => {
-        // Snap to start (0), end (1), or every window.innerHeight increment
-        const images = document.querySelector(".images");
-        const scrollHeight = images.scrollHeight;
-        const increments = [0, 1];
-        if (scrollHeight > 0) {
-          const numSteps = Math.floor(scrollHeight / window.innerHeight);
-          for (let i = 1; i <= numSteps; i++) {
-            increments.push((i * window.innerHeight) / scrollHeight);
-          }
-        }
-        // Find the closest increment
-        return increments.reduce((prev, curr) =>
-          Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
-        );
-      },
-      duration: 0.3,
-      delay: 0.05,
-      ease: "power1.inOut",
-    },
-    // end: () => "bottom+=" + window.innerHeight * 3,
-  },
-  y: () => -window.innerHeight * 3,
 });
 
 const VITE_URL = import.meta.env.VITE_URL;

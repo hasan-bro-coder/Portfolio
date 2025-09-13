@@ -40,9 +40,9 @@ window.onload = () => {
     ".loader",
     {
       delay: 1,
-      "--clip": "100%",
-      duration: 2,
+      "--clip": "0%",
+      duration: 1.33,
     },
-    0
+    0.33
   );
 };

@@ -12,6 +12,18 @@
   font-variation-settings: "wdth" 100;
 }
 
+/* .bg {
+  position: absolute;
+  z-index: 100;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: repeat(auto-fit, 40px);
+} */
+/* .dot {
+  aspect-ratio: 1/1;
+  border: 1px rgba(255, 255, 255, 0.075) solid;
+} */
 .canvas {
   position: absolute;
   top: 0;
@@ -24,6 +36,31 @@
   /* transform: translate(-50%, -50%); */
 }
 
+body {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.048) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.048) 1px, transparent 1px);
+  background-size: 3em 3em;
+}
+/* body {
+  --dot-color: white;
+  --dot-size: 3px;
+  --dot-space: 33px;
+  background: linear-gradient(
+        90deg,
+        var(--color-black) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--color-black) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+} */
 :root {
   line-height: 1.5;
   font-weight: 400;
@@ -55,9 +92,14 @@ a {
   transition: all 100ms;
 } */
 
+.about {
+  grid-auto-columns: 1fr;
+  /* background: #333; */
+}
+
 .loader {
-  --clip: 0%;
-  clip-path: inset(0 0 var(--clip) 0);
+  --clip: 110%;
+  clip-path: circle(var(--clip) at 50% 0%);
 }
 
 main {
@@ -291,9 +333,9 @@ footer button {
   will-change: transform;
 }
 
-.sbtn{
+.sbtn {
   @apply rounded-l-4xl rounded-r-4xl border-current overflow-hidden no-underline transition-transform duration-200 ease-in-out will-change-transform
-  /* px-5 py-2 border-2 border-current overflow-hidden no-underline transition-transform duration-200 ease-in-out will-change-transform text-[20px] rounded-l-4xl rounded-r-4xl */
+  /* px-5 py-2 border-2 border-current overflow-hidden no-underline transition-transform duration-200 ease-in-out will-change-transform text-[20px] rounded-l-4xl rounded-r-4xl */;
 }
 
 .sbtn::after {
