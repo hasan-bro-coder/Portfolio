@@ -1,4 +1,6 @@
 import Lenis from "lenis";
+import "lenis/dist/lenis.css";
+
 import AOS from "aos";
 import { gsap } from "gsap";
 
@@ -7,7 +9,10 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
-const lenis = new Lenis();
+const lenis = new Lenis({
+  lerp: 0.09,
+  wheelMultiplier: 0.8,
+});
 lenis.on("scroll", ScrollTrigger.update);
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
@@ -128,7 +133,7 @@ addScrollSkew(document.querySelector(".pfp"), {
 gsap.to(".about", {
   scrollTrigger: {
     trigger: ".about",
-    markers: true,
+    // markers: true,
     snap: [0],
     start: "top-=100 top",
     end: "bottom-=260",
@@ -138,7 +143,7 @@ gsap.to(".about", {
 gsap.to(".tech-con", {
   scrollTrigger: {
     trigger: ".tech-con",
-    markers: true,
+    // markers: true,
     snap: [0],
     start: "top-=100 top",
     end: "bottom-=260",
@@ -266,6 +271,29 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     alert("Failed to send message.");
   }
 });
+
+function textPopup() {
+  document.querySelectorAll(".text-anim").forEach((el) => {
+    const myText = new SplitText(el, {
+      type: "words,chars",
+      charsClass: "char",
+    });
+    gsap.to(myText.chars, {
+      scrollTrigger: {
+        trigger: el,
+        toggleActions: "play pause resume reset",
+        markers: true,
+        // scrub: 0.9,
+      },
+      y: 0,
+      stagger: 0.05,
+      delay: 0.2,
+      duration: 0.1,
+    });
+  });
+}
+
+textPopup();
 
 // document.querySelectorAll(".images img").forEach((el)=>{
 //   gsap.to(el,{
