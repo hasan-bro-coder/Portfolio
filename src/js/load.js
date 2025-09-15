@@ -1,5 +1,5 @@
-import "aos/dist/aos.css";
-import "./style.css";
+// import "aos/dist/aos.css";
+import "../style.css";
 
 import { gsap } from "gsap";
 

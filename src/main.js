@@ -1,7 +1,6 @@
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
-import AOS from "aos";
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,7 +17,6 @@ gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
 });
 gsap.ticker.lagSmoothing(0);
-AOS.init();
 
 // let split = SplitText.create("main .name", {
 //   type: "chars",
@@ -28,107 +26,49 @@ document.querySelector(
   ".footer-text"
 ).innerHTML = `&copy; Made by: Hasanur Rahman ${new Date().getFullYear()}`;
 
-function animateText(element) {
-  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-  let revealIndex = 0;
-  const originalText = element.dataset.text.split("");
-  // const lines = originalText.split("<br>");
+// function addScrollSkew(el, options = {}) {
+//   let lastScrollY = window.scrollY;
+//   let ticking = false;
+//   let resetTimeout;
 
-  const intervalId = setInterval(() => {
-    element.innerHTML = originalText
-      // lines
-      // .map((line, lineIdx) =>
-      // Array.from(line)
-      .map((char, charIdx) => {
-        // Exception: keep 🇧🇩 (Bangladesh flag emoji) intact
-        if (char === "🇧🇩") return "🇧🇩";
-        if (char === " ") return " ";
-        if (char === ":") return ":";
-        if (charIdx < revealIndex) return originalText[charIdx];
-        return charset[Math.floor(Math.random() * charset.length)];
-      })
-      .join("");
-    // )
-    // Scale increases at start, peaks at middle, then decreases to normal at end
-    // .join("<br>");
-    if (revealIndex > originalText.length) {
-      clearInterval(intervalId);
-    }
-    revealIndex += 1 / 2;
-  }, 30);
-}
+//   const maxSkew = options.maxSkew || 15; // maximum tilt angle
+//   const speedFactor = options.speedFactor || 0.4; // sensitivity
+//   const resetDelay = options.resetDelay || 150; // ms to reset
 
-function assignAnimation(selector) {
-  document.querySelectorAll(selector).forEach((element) => {
-    if (!element.dataset.text) {
-      element.dataset.text = element.innerHTML;
-    }
-    element.onmouseover = () => animateText(element);
+//   function updateSkew() {
+//     const currentScrollY = window.scrollY;
+//     const scrollSpeed = currentScrollY - lastScrollY;
 
-    // Animate when element scrolls into view
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateText(element);
-            obs.unobserve(element);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(element);
-  });
-}
+//     // clamp skew value
+//     const skewValue = Math.max(
+//       -maxSkew,
+//       Math.min(maxSkew, scrollSpeed * speedFactor)
+//     );
 
-assignAnimation("main ul li");
-assignAnimation(".about ul li");
-assignAnimation(".about h2 span");
-assignAnimation(".contact a");
+//     el.style.transform = `skewY(${skewValue}deg)`;
 
-function addScrollSkew(el, options = {}) {
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-  let resetTimeout;
+//     lastScrollY = currentScrollY;
+//     ticking = false;
 
-  const maxSkew = options.maxSkew || 15; // maximum tilt angle
-  const speedFactor = options.speedFactor || 0.4; // sensitivity
-  const resetDelay = options.resetDelay || 150; // ms to reset
+//     clearTimeout(resetTimeout);
+//     resetTimeout = setTimeout(() => {
+//       el.style.transform = `skewY(0deg)`;
+//     }, resetDelay);
+//   }
 
-  function updateSkew() {
-    const currentScrollY = window.scrollY;
-    const scrollSpeed = currentScrollY - lastScrollY;
+//   lenis.on("scroll", () => {
+//     if (!ticking) {
+//       window.requestAnimationFrame(updateSkew);
+//       ticking = true;
+//     }
+//   });
+// }
 
-    // clamp skew value
-    const skewValue = Math.max(
-      -maxSkew,
-      Math.min(maxSkew, scrollSpeed * speedFactor)
-    );
-
-    el.style.transform = `skewY(${skewValue}deg)`;
-
-    lastScrollY = currentScrollY;
-    ticking = false;
-
-    clearTimeout(resetTimeout);
-    resetTimeout = setTimeout(() => {
-      el.style.transform = `skewY(0deg)`;
-    }, resetDelay);
-  }
-
-  lenis.on("scroll", () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateSkew);
-      ticking = true;
-    }
-  });
-}
-
-addScrollSkew(document.querySelector(".pfp"), {
-  maxSkew: 10,
-  speedFactor: 0.1,
-  resetDelay: 300,
-});
+// addScrollSkew(document.querySelector(".pfp"), {
+//   maxSkew: 10,
+//   speedFactor: 0.1,
+//   resetDelay: 300,
+// });
 
 gsap.to(".about", {
   scrollTrigger: {
@@ -244,32 +184,6 @@ gsap.from(".project-card", {
     trigger: "#projects",
     start: "top 80%", // adjust as needed
   },
-});
-
-const VITE_URL = import.meta.env.VITE_URL;
-document.getElementById("contactForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const data = {
-    name: form.name.value,
-    email: form.email.value,
-    service: form.service.value,
-    message: form.message.value,
-  };
-  const payload = {
-    content: `New contact form submission:\nName: ${data.name}\nEmail: ${data.email}\nService: ${data.service}\nMessage: ${data.message}`,
-  };
-  try {
-    await fetch(VITE_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    form.reset();
-    alert("Message is sent! we will responce back soon");
-  } catch {
-    alert("Failed to send message.");
-  }
 });
 
 function textPopup() {
