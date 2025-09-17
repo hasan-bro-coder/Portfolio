@@ -8,15 +8,14 @@ function animateText(element) {
   // const lines = originalText.split("<br>");
 
   const intervalId = setInterval(() => {
-    element.innerHTML = originalText
+    element.innerText = originalText
       // lines
       // .map((line, lineIdx) =>
       // Array.from(line)
       .map((char, charIdx) => {
         // Exception: keep 🇧🇩 (Bangladesh flag emoji) intact
-        if (char === "🇧🇩") return "🇧🇩";
-        if (char === " ") return " ";
-        if (char === ":") return ":";
+        if (char === " " || char === ":" || char === "&" || char === ",")
+          return char;
         if (charIdx < revealIndex) return originalText[charIdx];
         return charset[Math.floor(Math.random() * charset.length)];
       })
@@ -34,7 +33,7 @@ function animateText(element) {
 function assignAnimation(selector) {
   document.querySelectorAll(selector).forEach((element) => {
     if (!element.dataset.text) {
-      element.dataset.text = element.innerHTML;
+      element.dataset.text = element.innerText;
     }
     element.onmouseover = () => animateText(element);
 

@@ -56,7 +56,11 @@
           </li>
         </ul>
       </div>
-      <button class="btn contact-link">Contact Me</button>
+      <div
+        class="p p-10 absolute sm:bottom-10 sm:right-20 bottom-10 right-10 z-10"
+      >
+        <button class="btn contact-link magnet">Contact Me</button>
+      </div>
     </main>
 
     <section class="about mt-40 w-screen min-h-screen mb-20">
@@ -71,8 +75,8 @@
             <ul
               class="text-md max-w-xl list-disc ml-4 text-gray-300 gap-2 flex flex-col"
             >
-              <li class="grayscale-50">17 yo • Dhaka, Bangladesh 🇧🇩</li>
-              <li>Embedded Systems & Fullstack Web Development</li>
+              <li class="grayscale-50">17 yo • Dhaka, Bangladesh</li>
+              <li>Embedded Systems && Fullstack WebDev</li>
               <li>Passionate about low-level programming</li>
               <li class="font-bold text-gray-200">Available for work</li>
             </ul>
@@ -373,9 +377,99 @@
       </div>
     </section> -->
 
-    <!-- <div class="projects mt-40 w-screen flex flex-col h-[400vh]">
-      <h1 class="text-8xl text-center mb-20">Projects</h1>
+    <div class="projects mt-40 w-screen flex flex-col h-[400vh]">
+      <h1 class="text-8xl text-center mb-20 text-anim">Projects</h1>
       <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-[50vw] gap-5 px-5"
+      >
+        <div class="project">
+          <img
+            src="/projects/pagecord.png"
+            alt=""
+            class="object-cover rounded-2xl"
+          />
+          <div class="info flex flex-col gap-5 justify-start">
+            <h1 class="text-6xl">Pagecord</h1>
+            <p>fast discord clone</p>
+            <div class="techs flex gap-4">
+              <span>vue</span>
+              <span>Node.js</span>
+              <span>supabase</span>
+              <span>socket.io</span>
+            </div>
+          </div>
+        </div>
+        <div class="project">
+          <img
+            src="/projects/bronotes.png"
+            alt=""
+            class="object-cover rounded-2xl"
+          />
+          <div class="info flex flex-col gap-5 justify-start">
+            <h1 class="text-6xl">Bro Notes</h1>
+            <p>bro notes is a minimal md note app</p>
+            <div class="techs flex gap-4">
+              <span>vue</span>
+              <span>markdown</span>
+              <span>typescript</span>
+            </div>
+          </div>
+        </div>
+        <div class="project">
+          <img
+            src="/projects/portfolio.png"
+            alt=""
+            class="object-cover rounded-2xl"
+          />
+          <div class="info flex flex-col gap-5 justify-start">
+            <h1 class="text-6xl">Portfolio</h1>
+            <p>my old Portfolio made in 2022</p>
+            <div class="techs flex gap-4">
+              <span>html</span>
+              <span>css</span>
+              <span>javascript</span>
+              <span>gsap</span>
+            </div>
+          </div>
+        </div>
+        <div class="project">
+          <img
+            src="/projects/smartoutfit.png"
+            alt=""
+            class="object-cover rounded-2xl"
+          />
+          <div class="info flex flex-col gap-5 justify-start">
+            <h1 class="text-6xl">Smartoutfit</h1>
+            <p>ecommerce site for a clothing brand</p>
+            <div class="techs flex gap-4">
+              <span>vue</span>
+              <span>supabase</span>
+              <span>stripe</span>
+              <span>aws</span>
+            </div>
+          </div>
+        </div>
+        <div class="project md:inline-block hidden">
+          <div class="infos flex flex-col gap-5 justify-start p-5">
+            <h1 class="text-6xl">Brolang</h1>
+            <p>a lua like language</p>
+            <div class="techs flex gap-4">
+              <span>rust</span>
+            </div>
+          </div>
+        </div>
+        <div class="project md:inline-block hidden">
+          <div class="infos flex flex-col gap-5 justify-start p-5">
+            <h1 class="text-6xl">ascii</h1>
+            <p>ascii art generator</p>
+            <div class="techs flex gap-4">
+              <span>rust</span>
+              <span>html</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div
         class="flex h-[300vh] gap-[3vw] md:justify-center justify-around con -z-10"
       >
         <div
@@ -430,8 +524,8 @@
             class="object-cover rounded-2xl"
           />
         </div>
-      </div>
-    </div> -->
+      </div> -->
+    </div>
 
     <div class="contact w-screen h-screen mt-80">
       <h1 class="text-8xl text-center mb-20 text-anim">Contact me</h1>
@@ -506,11 +600,13 @@
 
     <footer class="footer-content w-screen text-center py-6 mt-20">
       <div class="flex flex-col items-center gap-2">
-        <button class="sbtn px-6 py-2 border-2 mb-8 text-4xl up">
-          <!-- &#8593; <br /> -->
-          up
-        </button>
-        <div class="flex flex-wrap justify-center text-lg">
+        <div class="absolute -translate-y-20">
+          <button class="sbtn px-6 py-2 border-2 text-4xl up magnet">
+            <!-- &#8593; <br /> -->
+            up
+          </button>
+        </div>
+        <div class="flex flex-wrap justify-center text-lg mt-8">
           <span class="footer-text">Made by: Hasan</span>
         </div>
         <div class="flex flex-wrap justify-center gap-6 text-lg text-gray-300">
@@ -526,8 +622,10 @@
 
     <script type="module" src="/src/js/load.js" defer></script>
     <script type="module" src="/src/main.js" defer></script>
+    <script type="module" src="/src/js/button.js" defer></script>
     <script type="module" src="/src/js/text.js" defer></script>
     <script type="module" src="/src/js/three.js" defer></script>
+    <script type="module" src="/src/js/project.js" defer></script>
     <script type="module" src="/src/js/form.js" defer></script>
   </body>
 </html>

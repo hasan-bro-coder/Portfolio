@@ -70,27 +70,26 @@ document.querySelector(
 //   resetDelay: 300,
 // });
 
-gsap.to(".about", {
-  scrollTrigger: {
-    trigger: ".about",
-    // markers: true,
-    snap: [0],
-    start: "top-=100 top",
-    end: "bottom-=260",
-    // end: "top bottom"
-  },
-});
-gsap.to(".tech-con", {
-  scrollTrigger: {
-    trigger: ".tech-con",
-    // markers: true,
-    snap: [0],
-    start: "top-=100 top",
-    end: "bottom-=260",
-    // end: "top bottom"
-  },
-});
-let links = gsap.utils.toArray(".links a");
+// gsap.to(".about", {
+//   scrollTrigger: {
+//     trigger: ".about",
+//     // markers: true,
+//     snap: [0],
+//     start: "top-=100 top",
+//     end: "bottom-=260",
+//     // end: "top bottom"
+//   },
+// });
+// gsap.to(".tech-con", {
+//   scrollTrigger: {
+//     trigger: ".tech-con",
+//     // markers: true,
+//     snap: [0],
+//     start: "top-=100 top",
+//     end: "bottom-=260",
+//     // end: "top bottom"
+//   },
+// });
 
 document.querySelector(".up").onclick = () => {
   gsap.to(window, { duration: 7, scrollTo: 0 });
@@ -98,13 +97,6 @@ document.querySelector(".up").onclick = () => {
 document.querySelector(".contact-link").onclick = () => {
   gsap.to(window, { duration: 2, scrollTo: ".contact" });
 };
-// gsap.set(links,{y:100})
-// gsap.to(links,{
-//   scrollTrigger:".about",
-//   stagger: 0.5,
-//   duration:1,
-//   y: 0
-// })
 
 // gsap.to(".titles", {
 //   scrollTrigger: {
@@ -196,7 +188,7 @@ function textPopup() {
       scrollTrigger: {
         trigger: el,
         toggleActions: "play pause resume reset",
-        markers: true,
+        // markers: true,
         // scrub: 0.9,
       },
       y: 0,
