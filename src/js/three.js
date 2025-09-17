@@ -1,16 +1,25 @@
-import * as THREE from "three";
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  SphereGeometry,
+  MeshStandardMaterial,
+  Mesh,
+  PointLight,
+  DirectionalLight,
+  PointLightHelper,
+} from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
+const scene = new Scene();
+const camera = new PerspectiveCamera(
   25,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
 
-const renderer = new THREE.WebGLRenderer({
+const renderer = new WebGLRenderer({
   canvas: document.querySelector(".canvas"),
   alpha: true,
   antialias: true,
@@ -20,11 +29,11 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 // renderer.setSize( window.innerWidth / 4, window.innerHeight / 4 );
 renderer.setAnimationLoop(animate);
-const geometry = new THREE.SphereGeometry(3, 64 * 2, 32 * 2);
-// new THREE.TorusGeometry(15, 5, 16, 100);
-// new THREE.TorusKnotGeometry( 15,3,100,16,1,1 );
-// new THREE.DodecahedronGeometry(15,5)
-const material = new THREE.MeshStandardMaterial({
+const geometry = new SphereGeometry(3, 64 * 2, 32 * 2);
+// new TorusGeometry(15, 5, 16, 100);
+// new TorusKnotGeometry( 15,3,100,16,1,1 );
+// new DodecahedronGeometry(15,5)
+const material = new MeshStandardMaterial({
   // depthTest: false,
   // depthWrite: false,
   flatShading: true,
@@ -50,7 +59,7 @@ const material = new THREE.MeshStandardMaterial({
   // roughness: 0.4,
 });
 
-let sphere = new THREE.Mesh(geometry, material);
+let sphere = new Mesh(geometry, material);
 scene.add(sphere);
 
 // const loader = new FBXLoader();
@@ -58,11 +67,11 @@ scene.add(sphere);
 // loader.load(
 //   "./models/hero.fbx",
 //   function (object) {
-//     // 'object' is the loaded 3D model (a THREE.Group)
+//     // 'object' is the loaded 3D model (a Group)
 //     scene.add(object);
 
 //     // If the FBX model contains animations, you can set up an AnimationMixer
-//     // mixer = new THREE.AnimationMixer(object);
+//     // mixer = new AnimationMixer(object);
 //     // const action = mixer.clipAction(object.animations[0]); // Assuming one animation
 //     // action.play();
 //   },
@@ -76,18 +85,18 @@ scene.add(sphere);
 //   }
 // );
 
-const pointLight = new THREE.PointLight(0xffffff, 4000);
+const pointLight = new PointLight(0xffffff, 4000);
 pointLight.position.set(100, 0, 100);
 
-// const ambientLight = new THREE.AmbientLight(0xffffff);
+// const ambientLight = new AmbientLight(0xffffff);
 // scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+const directionalLight = new DirectionalLight(0xffffff, 3);
 // directionalLight.position.set(100, 10, 100);
 
-// const lightHelper = new THREE.PointLightHelper(pointLight);
+// const lightHelper = new PointLightHelper(pointLight);
 // scene.add(pointLight, lightHelper);
-const lightHelper = new THREE.PointLightHelper(directionalLight);
+const lightHelper = new PointLightHelper(directionalLight);
 scene.add(directionalLight);
 
 const controls = new OrbitControls(camera, document.querySelector(".canvas"));
@@ -126,7 +135,7 @@ function getSphereRadius() {
 
 // Function to update sphere geometry size
 function updateSphereSize() {
-  const newGeometry = new THREE.SphereGeometry(getSphereRadius(), 64 * 2, 32 * 2);
+  const newGeometry = new SphereGeometry(getSphereRadius(), 64 * 2, 32 * 2);
   sphere.geometry.dispose();
   sphere.geometry = newGeometry;
 }
@@ -143,16 +152,16 @@ window.addEventListener("resize", () => {
 
 // import * as THREE from "three";
 
-// const scene = new THREE.Scene();
+// const scene = new Scene();
 
-// const camera = new THREE.PerspectiveCamera(
+// const camera = new PerspectiveCamera(
 //   45,
 //   window.innerWidth / window.innerHeight,
 //   0.1,
 //   10000
 // );
 
-// const renderer = new THREE.WebGLRenderer({
+// const renderer = new WebGLRenderer({
 //   canvas: document.querySelector(".canvas"),
 //   alpha: true,
 //   antialias: true,
@@ -163,11 +172,11 @@ window.addEventListener("resize", () => {
 // // camera.position.setZ(100);
 // renderer.render(scene, camera);
 
-// const geometry = new THREE.SphereGeometry(15, 100, 100);
-// // new THREE.TorusGeometry( 15, 5, 16, 100 );
-// // new THREE.TorusKnotGeometry( 15,3,100,16,1,1 );
-// // new THREE.DodecahedronGeometry(15,5)
-// const material = new THREE.MeshStandardMaterial({
+// const geometry = new SphereGeometry(15, 100, 100);
+// // new TorusGeometry( 15, 5, 16, 100 );
+// // new TorusKnotGeometry( 15,3,100,16,1,1 );
+// // new DodecahedronGeometry(15,5)
+// const material = new MeshStandardMaterial({
 //   // flatShading:true,
 //   // depthTest: false,
 //   // depthWrite: false,
@@ -175,16 +184,16 @@ window.addEventListener("resize", () => {
 //   // wireframe:true,
 //   roughness: 0.4,
 // });
-// let sphere = new THREE.Mesh(geometry, material);
+// let sphere = new Mesh(geometry, material);
 // scene.add(sphere);
 
-// const pointLight = new THREE.PointLight(0xffffff, 0.8);
+// const pointLight = new PointLight(0xffffff, 0.8);
 // pointLight.position.set(40, 30, 90);
 
-// // const ambientLight = new THREE.AmbientLight(0xffffff);
+// // const ambientLight = new AmbientLight(0xffffff);
 // // scene.add(ambientLight);
-// const lightHelper = new THREE.PointLightHelper(pointLight);
-// // const gridHelper = new THREE.GridHelper(200, 50);
+// const lightHelper = new PointLightHelper(pointLight);
+// // const gridHelper = new GridHelper(200, 50);
 
 // scene.add(pointLight, lightHelper);
 

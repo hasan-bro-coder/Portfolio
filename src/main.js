@@ -26,48 +26,67 @@ document.querySelector(
   ".footer-text"
 ).innerHTML = `&copy; Made by: Hasanur Rahman ${new Date().getFullYear()}`;
 
-// function addScrollSkew(el, options = {}) {
-//   let lastScrollY = window.scrollY;
-//   let ticking = false;
-//   let resetTimeout;
-
-//   const maxSkew = options.maxSkew || 15; // maximum tilt angle
-//   const speedFactor = options.speedFactor || 0.4; // sensitivity
-//   const resetDelay = options.resetDelay || 150; // ms to reset
-
-//   function updateSkew() {
-//     const currentScrollY = window.scrollY;
-//     const scrollSpeed = currentScrollY - lastScrollY;
-
-//     // clamp skew value
-//     const skewValue = Math.max(
-//       -maxSkew,
-//       Math.min(maxSkew, scrollSpeed * speedFactor)
-//     );
-
-//     el.style.transform = `skewY(${skewValue}deg)`;
-
-//     lastScrollY = currentScrollY;
-//     ticking = false;
-
-//     clearTimeout(resetTimeout);
-//     resetTimeout = setTimeout(() => {
-//       el.style.transform = `skewY(0deg)`;
-//     }, resetDelay);
+// gsap.fromTo(
+//   ".project",
+//   { y: 100 }, // H1 Starts on the rights
+//   {
+//     y: 0, // Moves to the left
+//     scrollTrigger: {
+//       // pin: "header",
+//       trigger: ".project",
+//       start: "top center",
+//       end: "bottom top",
+//       markers: true,
+//       // scrub: true,
+//     },
+//     duration: 1,
 //   }
+// );
 
-//   lenis.on("scroll", () => {
-//     if (!ticking) {
-//       window.requestAnimationFrame(updateSkew);
-//       ticking = true;
-//     }
-//   });
-// }
+function addScrollSkew(el, options = {}) {
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  let resetTimeout;
 
-// addScrollSkew(document.querySelector(".pfp"), {
-//   maxSkew: 10,
-//   speedFactor: 0.1,
-//   resetDelay: 300,
+  const maxSkew = options.maxSkew || 15; // maximum tilt angle
+  const speedFactor = options.speedFactor || 0.4; // sensitivity
+  const resetDelay = options.resetDelay || 150; // ms to reset
+
+  function updateSkew() {
+    const currentScrollY = window.scrollY;
+    const scrollSpeed = currentScrollY - lastScrollY;
+
+    // clamp skew value
+    const skewValue = Math.max(
+      -maxSkew,
+      Math.min(maxSkew, scrollSpeed * speedFactor)
+    );
+
+    el.forEach((e) => (e.style.transform = `skewY(${skewValue}deg)`));
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+
+    clearTimeout(resetTimeout);
+    resetTimeout = setTimeout(() => {
+      el.forEach((e) => (e.style.transform = `skewY(0deg)`));
+    }, resetDelay);
+  }
+
+  lenis.on("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateSkew);
+      ticking = true;
+    }
+  });
+}
+
+// document.querySelectorAll(".project").forEach((el) => {
+addScrollSkew(document.querySelectorAll(".project"), {
+  maxSkew: 10,
+  speedFactor: 0.1,
+  resetDelay: 300,
+});
 // });
 
 // gsap.to(".about", {
