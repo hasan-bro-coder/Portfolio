@@ -12,6 +12,40 @@
     />
   </head>
   <body class="inc h-max">
+    <div class="screen"></div>
+    <div class="cursor">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+
     <div class="contact-form"></div>
     <style>
       .loader {
@@ -377,14 +411,16 @@
       </div>
     </section> -->
 
-    <div class="projects mt-40 w-screen flex flex-col h-full mb-40">
+    <div
+      class="projects mt-40 w-screen flex flex-col h-full mb-40 min-h-[350vh] md:min-h-[200vh] lg:min-h-[150vh]"
+    >
       <h1 class="text-8xl text-center mb-20 text-anim">Projects</h1>
       <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-[50vw] gap-5 px-5"
       >
-        <div class="project">
+        <a class="project" href="https://your-link-pagecord.com">
           <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-6xl">Pagecord</h1>
+            <h1 class="text-4xl">Pagecord</h1>
             <p>fast discord clone</p>
             <div class="flex gap-4 flex-wrap">
               <span>vue</span>
@@ -398,10 +434,10 @@
             alt=""
             class="object-cover rounded-2xl info"
           />
-        </div>
+        </a>
         <div class="project">
           <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-6xl">Bro Notes</h1>
+            <h1 class="text-4xl">Bro Notes</h1>
             <p>bro notes is a minimal md note app</p>
             <div class="flex gap-4 flex-wrap">
               <span>vue</span>
@@ -417,7 +453,7 @@
         </div>
         <div class="project">
           <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-6xl">Portfolio</h1>
+            <h1 class="text-4xl">Portfolio</h1>
             <p>my old Portfolio made in 2022</p>
             <div class="flex gap-4 flex-wrap">
               <span>html</span>
@@ -434,7 +470,7 @@
         </div>
         <div class="project">
           <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-6xl">Smartoutfit</h1>
+            <h1 class="text-4xl">Smartoutfit</h1>
             <p>ecommerce site for a clothing brand</p>
             <div class="flex gap-4 flex-wrap">
               <span>vue</span>
@@ -452,7 +488,7 @@
         <!-- Keep these two hidden as they were -->
         <div class="project md:inline-block hidden">
           <div class="techs infos flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-6xl">Brolang</h1>
+            <h1 class="text-4xl">Brolang</h1>
             <p>a lua like language</p>
             <div class="flex gap-4 flex-wrap">
               <span>rust</span>
@@ -466,7 +502,7 @@
         </div>
         <div class="project md:inline-block hidden">
           <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-6xl">ascii</h1>
+            <h1 class="text-4xl">ascii</h1>
             <p>ascii art generator</p>
             <div class="flex gap-4 flex-wrap">
               <span>rust</span>
@@ -584,22 +620,24 @@
         </div>
         <div
           class="flex flex-col text-gray-300 justify-center items-center gap-1"
-          style="text-transform: none; white-space: pre"
         >
-          <div class="flex flex-col gap-1">
+          <div
+            class="flex flex-col gap-1"
+            style="text-transform: none; white-space: pre"
+          >
             <a href="mailto:hasanur.professional@gmail.com" target="_blank"
-              >email :hasanur.professional@gmail.com</a
+              >email : hasanur.professional@gmail.com</a
             >
             <a href="tel:+8801714331989" target="_blank"
-              >number :+880 17143 31989</a
+              >number : +880 17143 31989</a
             >
             <a href="https://github.com/hasan-bro-coder" target="_blank"
-              >github :github.com/hasan-bro-coder</a
+              >github : hasan-bro-coder</a
             >
             <a href="https://discord.com/users/hasan894" target="_blank"
-              >discord :hasan894</a
+              >discord : hasan894</a
             >
-            <a href="#" target="_blank">linkedin :null</a>
+            <a href="#" target="_blank">linkedin : null</a>
           </div>
         </div>
       </div>
@@ -629,6 +667,7 @@
 
     <script type="module" src="/src/js/load.js" defer></script>
     <script type="module" src="/src/main.js" defer></script>
+    <script type="module" src="/src/js/mouse.js" defer></script>
     <script type="module" src="/src/js/button.js" defer></script>
     <script type="module" src="/src/js/text.js" defer></script>
     <script type="module" src="/src/js/three.js" defer></script>

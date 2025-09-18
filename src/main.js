@@ -26,22 +26,13 @@ document.querySelector(
   ".footer-text"
 ).innerHTML = `&copy; Made by: Hasanur Rahman ${new Date().getFullYear()}`;
 
-// gsap.fromTo(
-//   ".project",
-//   { y: 100 }, // H1 Starts on the rights
-//   {
-//     y: 0, // Moves to the left
-//     scrollTrigger: {
-//       // pin: "header",
-//       trigger: ".project",
-//       start: "top center",
-//       end: "bottom top",
-//       markers: true,
-//       // scrub: true,
-//     },
-//     duration: 1,
-//   }
-// );
+gsap.to(".screen", {
+  scrollTrigger: {
+    trigger: document.body,
+    scrub: true,
+  },
+  y: -window.innerHeight,
+});
 
 function addScrollSkew(el, options = {}) {
   let lastScrollY = window.scrollY;
