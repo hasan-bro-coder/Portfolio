@@ -2,6 +2,15 @@ import gsap from "gsap";
 const boxes = document.querySelectorAll(".cursor .circle");
 if (isMobile) {
   boxes.remove();
+  window.addEventListener(
+    "touchmove",
+    function (e) {
+      if (e.touches[0].clientX !== undefined) {
+        e.preventDefault();
+      }
+    },
+    { passive: false }
+  );
 } else {
   // Move all boxes toward the mouse position
   function moveBox(e) {
