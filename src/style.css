@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"); */
 /* @import url("https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap"); */
 @import "tailwindcss";
 .inc {
@@ -110,7 +110,9 @@ body {
   -ms-overflow-style: none; /* IE and old Edge */
   scrollbar-width: none;
 }
-
+* {
+  cursor: none;
+}
 a {
   text-decoration: inherit;
 }
@@ -508,12 +510,12 @@ footer button {
 }
 
 .cursor .circle {
-  position: absolute;
+  position: fixed;
   width: 25px;
   height: 25px;
   top: 50%;
   left: 50%;
-  margin: -50 0 0 -50px;
+  /* margin: -50 0 0 -50px; */
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50px;
   backface-visibility: hidden;

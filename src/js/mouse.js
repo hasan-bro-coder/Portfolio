@@ -17,8 +17,8 @@ if (isMobile) {
     boxes.forEach((box, index) => {
       gsap.to(box, {
         duration: 0.05,
-        left: e.pageX - 10 + "px",
-        top: e.pageY - 10 + "px",
+        left: e.clientX + "px",
+        top: e.clientY + "px",
         delay: index / 750,
       });
     });
@@ -26,7 +26,6 @@ if (isMobile) {
 
   // Listen for mousemove on the window
   window.addEventListener("mousemove", moveBox);
-  window.addEventListener("wheel", moveBox);
   // window.onscroll = moveBox;
 
   // Initial visibility

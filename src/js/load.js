@@ -14,7 +14,6 @@ let namel = SplitText.create("#namel", {
 let els = [];
 
 namel.chars.forEach((el, idx) => {
-  console.log(el);
   if (idx % 2 == 0) {
     gsap.set(el, { y: window.innerHeight - el.clientHeight });
     els.push(el);

@@ -177,16 +177,16 @@ document.querySelector(".contact-link").onclick = () => {
 //   y: () => -window.innerHeight * 3,
 // });
 
-gsap.from(".project-card", {
-  y: 50,
-  opacity: 0,
-  duration: 0.8,
-  stagger: 0.2,
-  scrollTrigger: {
-    trigger: "#projects",
-    start: "top 80%", // adjust as needed
-  },
-});
+// gsap.from(".project-card", {
+//   y: 50,
+//   opacity: 0,
+//   duration: 0.8,
+//   stagger: 0.2,
+//   scrollTrigger: {
+//     trigger: "#projects",
+//     start: "top 80%", // adjust as needed
+//   },
+// });
 
 function textPopup() {
   document.querySelectorAll(".text-anim").forEach((el) => {
