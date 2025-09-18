@@ -31,7 +31,7 @@ gsap.to(".screen", {
     trigger: document.body,
     scrub: true,
   },
-  y: -window.innerHeight,
+  y: -window.innerHeight * 2,
 });
 
 function addScrollSkew(el, options = {}) {

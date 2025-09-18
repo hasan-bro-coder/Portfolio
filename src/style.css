@@ -38,14 +38,20 @@
 }
 
 body {
-  cursor: none;
   background-color: transparent;
+  overflow-x: hidden;
   /* background-image: linear-gradient(
       rgba(255, 255, 255, 0.048) 1px,
       transparent 1px
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.048) 1px, transparent 1px);
   background-size: 3em 3em; */
+}
+
+/* Hide scrollbars but keep scrolling */
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, new Edge */
 }
 
 .screen {
@@ -87,6 +93,7 @@ body {
   color: rgba(255, 255, 255, 0.87);
   background-color: #101010;
   box-sizing: border-box;
+  cursor: none;
 
   margin: 0px;
   padding: 0px;
@@ -100,6 +107,8 @@ body {
   --color-loader: #000000;
 
   text-transform: capitalize;
+  -ms-overflow-style: none; /* IE and old Edge */
+  scrollbar-width: none;
 }
 
 a {
@@ -116,7 +125,7 @@ a {
 }
 
 .loader {
-  --clip: 110%;
+  --clip: 120%;
   clip-path: circle(var(--clip) at 50% 0%);
 }
 
@@ -203,7 +212,7 @@ main ul {
 }
 .grid-con .box {
   aspect-ratio: 1/1;
-  height: 10vh;
+  height: clamp(50px, 10vw, 10vh);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -365,7 +374,7 @@ footer button {
 }
 
 .project img {
-  filter: grayscale(30%);
+  filter: grayscale(80%);
   object-fit: cover;
   /* background-image: linear-gradient(
       rgba(255, 255, 255, 0.048) 1px,

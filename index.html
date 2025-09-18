@@ -10,6 +10,12 @@
       href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap"
       rel="stylesheet"
     />
+    <script>
+      const isMobile =
+        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+    </script>
   </head>
   <body class="inc h-max">
     <div class="screen"></div>
@@ -195,7 +201,7 @@
     </div> -->
 
     <section
-      class="tech-con w-screen h-screen flex flex-col gap-20 items-center justify-center"
+      class="tech-con w-screen h-screen flex flex-col gap-20 items-center justify-center px-10"
     >
       <h1 class="text-8xl text-center text-anim">Skills</h1>
       <div class="grid-con flex flex-col gap-10">
@@ -411,7 +417,7 @@
       </div>
     </section> -->
 
-    <div
+    <section
       class="projects mt-40 w-screen flex flex-col h-full mb-40 min-h-[350vh] md:min-h-[200vh] lg:min-h-[150vh]"
     >
       <h1 class="text-8xl text-center mb-20 text-anim">Projects</h1>
@@ -568,13 +574,16 @@
           />
         </div>
       </div> -->
-    </div>
+    </section>
 
-    <div class="contact w-screen h-screen mt-80">
+    <section class="contact w-screen min-h-screen mt-80">
       <h1 class="text-8xl text-center mb-20 text-anim">Contact me</h1>
-      <div class="grid grid-cols-2 gap-20">
+      <div class="sm:grid sm:grid-cols-2 flex flex-col gap-20">
         <div class="flex items-center justify-center">
-          <form id="contactForm" class="flex flex-col gap-5 w-[25vw] mt-10">
+          <form
+            id="contactForm"
+            class="flex flex-col gap-5 md:w-[25vw] sm:w-full sm:px-5 md:px-0 w-[80vw] mt-10"
+          >
             <label for="name">Name</label>
             <input
               type="text"
@@ -619,29 +628,39 @@
           </form>
         </div>
         <div
-          class="flex flex-col text-gray-300 justify-center items-center gap-1"
+          class="flex flex-col text-gray-300 sm:items-center sm:pl-0 pl-[10vw] pt-15"
         >
-          <div
-            class="flex flex-col gap-1"
-            style="text-transform: none; white-space: pre"
+          <ul
+            class="flex flex-col gap-4"
+            style="text-transform: none; list-style: circle"
           >
-            <a href="mailto:hasanur.professional@gmail.com" target="_blank"
-              >email : hasanur.professional@gmail.com</a
-            >
-            <a href="tel:+8801714331989" target="_blank"
-              >number : +880 17143 31989</a
-            >
-            <a href="https://github.com/hasan-bro-coder" target="_blank"
-              >github : hasan-bro-coder</a
-            >
-            <a href="https://discord.com/users/hasan894" target="_blank"
-              >discord : hasan894</a
-            >
-            <a href="#" target="_blank">linkedin : null</a>
-          </div>
+            <li>
+              <a href="mailto:hasanur.professional@gmail.com" target="_blank"
+                >Email : hasanur.professional@gmail.com</a
+              >
+            </li>
+            <li>
+              <a href="tel:+8801714331989" target="_blank"
+                >Phone : +880 17143 31989</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/hasan-bro-coder" target="_blank"
+                >Github : hasan-bro-coder</a
+              >
+            </li>
+            <li>
+              <a href="https://discord.com/users/hasan894" target="_blank"
+                >Discord : hasan894</a
+              >
+            </li>
+            <li>
+              <a href="#" target="_blank"> Linkedin : null </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+    </section>
 
     <footer class="footer-content w-screen text-center py-6 mt-20">
       <div class="flex flex-col items-center gap-2">
