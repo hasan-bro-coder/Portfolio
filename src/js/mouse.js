@@ -1,7 +1,7 @@
 import gsap from "gsap";
 const boxes = document.querySelectorAll(".cursor .circle");
 if (isMobile) {
-  boxes.remove();
+  document.querySelector(".cursor").remove();
   window.addEventListener(
     "touchmove",
     function (e) {

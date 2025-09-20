@@ -29,7 +29,12 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 // renderer.setSize( window.innerWidth / 4, window.innerHeight / 4 );
 renderer.setAnimationLoop(animate);
-const geometry = new SphereGeometry(3, 64 * 2, 32 * 2);
+
+const geometry = new SphereGeometry(
+  3,
+  64 * (isMobile ? 0.5 : 2),
+  32 * (isMobile ? 0.5 : 2)
+);
 // new TorusGeometry(15, 5, 16, 100);
 // new TorusKnotGeometry( 15,3,100,16,1,1 );
 // new DodecahedronGeometry(15,5)
