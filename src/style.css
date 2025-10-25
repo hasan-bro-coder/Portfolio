@@ -509,6 +509,12 @@ footer button {
   }
 }
 
+.scroll-indicator {
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  animation: floatY 2.5s ease-in-out infinite;
+}
+
 .cursor .circle {
   position: fixed;
   width: 25px;

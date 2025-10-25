@@ -19,8 +19,9 @@ const camera = new PerspectiveCamera(
   1000
 );
 
+let canvas = document.querySelector(".canvas");
 const renderer = new WebGLRenderer({
-  canvas: document.querySelector(".canvas"),
+  canvas,
   alpha: true,
   antialias: true,
   depth: true,
@@ -29,6 +30,10 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 // renderer.setSize( window.innerWidth / 4, window.innerHeight / 4 );
 renderer.setAnimationLoop(animate);
+
+if (isMobile) {
+  canvas.style.pointerEvents = "none";
+}
 
 const geometry = new SphereGeometry(
   3,
@@ -105,6 +110,10 @@ const lightHelper = new PointLightHelper(directionalLight);
 scene.add(directionalLight);
 
 const controls = new OrbitControls(camera, document.querySelector(".canvas"));
+
+if (isMobile) {
+  controls.enabled = false;
+}
 
 controls.enableDamping = true;
 controls.enablePan = false;

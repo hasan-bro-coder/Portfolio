@@ -104,6 +104,9 @@ addScrollSkew(document.querySelectorAll(".project"), {
 document.querySelector(".up").onclick = () => {
   gsap.to(window, { duration: 7, scrollTo: 0 });
 };
+document.querySelector(".scroll-indicator").onclick = () => {
+  gsap.to(window, { duration: 1, scrollTo: window.innerHeight });
+};
 document.querySelector(".contact-link").onclick = () => {
   gsap.to(window, { duration: 2, scrollTo: ".contact" });
 };
