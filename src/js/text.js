@@ -1,6 +1,13 @@
 // src/animations/textScramble.js
 // import { animateText, assignAnimation } from "./textScrambleCore";
 
+
+const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent,
+        )
+
+
+
 function animateText(element) {
   const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
   let revealIndex = 0;
@@ -53,7 +60,9 @@ function assignAnimation(selector) {
   });
 }
 
-assignAnimation("main ul li");
-assignAnimation(".about ul li");
+if(!isMobile){
+  assignAnimation("main ul li");
+  assignAnimation(".about ul li");
 assignAnimation(".about h2 span");
 assignAnimation(".contact a");
+}
