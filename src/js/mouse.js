@@ -6,15 +6,6 @@ const isMobile =
 );
 if (isMobile) {
   document.querySelector(".cursor").remove();
-  window.addEventListener(
-    "touchmove",
-    function (e) {
-      if (e.touches[0].clientX !== undefined) {
-        // e.preventDefault();
-      }
-    },
-    { passive: false }
-  );
 } else {
   // Move all boxes toward the mouse position
   function moveBox(e) {
