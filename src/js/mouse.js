@@ -1,12 +1,16 @@
 import gsap from "gsap";
 const boxes = document.querySelectorAll(".cursor .circle");
+const isMobile =
+        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent,
+);
 if (isMobile) {
   document.querySelector(".cursor").remove();
   window.addEventListener(
     "touchmove",
     function (e) {
       if (e.touches[0].clientX !== undefined) {
-        e.preventDefault();
+        // e.preventDefault();
       }
     },
     { passive: false }
@@ -39,3 +43,5 @@ if (isMobile) {
     gsap.set(thirtiethText, { autoAlpha: 1, delay: 0 });
   }
 }
+
+

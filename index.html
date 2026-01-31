@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -55,10 +55,7 @@
       rel="stylesheet"
     />
     <script>
-      const isMobile =
-        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        );
+      
     </script>
   </head>
   <body class="inc h-max">
@@ -155,7 +152,7 @@
       <div
         class="flex md:flex-row flex-col-reverse px-[10vw] md:gap-[3vw] gap-[6vh] md:justify-center"
       >
-        <div class="text flex md:justify-center">
+        <div class="text flex justify-center">
           <div class="w-fit flex flex-col gap-16">
             <h2 class="text-4xl mb-4">Hi, I'm <span>Hasanur Rahman</span></h2>
 
@@ -190,12 +187,12 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-col md:items-center">
+        <div class="flex flex-col items-center">
           <img
             loading="lazy"
-            src="/image.webp"
+            src="/hasan.jpg"
             alt=""
-            class="pfp w-50 sm:w-50 md:w-80 lg:w-120 sm:rounded-2xl rounded-[50%] brightness-110"
+            class="pfp w-50 sm:w-50 md:w-80 lg:w-80 sm:rounded-2xl rounded-[50%] brightness-110"
           />
         </div>
       </div>
@@ -209,21 +206,6 @@
         <div class="web flex flex-col gap-10">
           <h2 class="text-xl">web dev:</h2>
           <div class="flex flex-wrap gap-10">
-            <div class="box">
-              <svg
-                width="60"
-                height="53"
-                viewBox="0 0 60 53"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M49.0078 17.1753C48.375 16.9623 47.7422 16.7612 47.1094 16.572C47.2148 16.1343 47.3086 15.6966 47.4023 15.2589C48.8438 8.20835 47.8945 2.54191 44.6953 0.672815C41.6133 -1.11347 36.5859 0.743794 31.5 5.21543C30.9961 5.65313 30.5039 6.11449 30.0352 6.57585C29.7187 6.26828 29.3906 5.9607 29.0625 5.66496C23.7305 0.885749 18.3867 -1.1253 15.1875 0.755623C12.1172 2.55374 11.2031 7.88895 12.4922 14.5609C12.6211 15.2234 12.7617 15.874 12.9258 16.5365C12.1758 16.7494 11.4375 16.986 10.7461 17.2344C4.48828 19.4229 0 22.8772 0 26.4498C0 30.1407 4.78125 33.8434 11.2852 36.091C11.8125 36.2685 12.3398 36.4459 12.8789 36.5997C12.7031 37.3095 12.5508 38.0074 12.4102 38.729C11.1797 45.2945 12.1406 50.4996 15.2109 52.2859C18.375 54.1313 23.6953 52.2386 28.875 47.6605C29.2852 47.2938 29.6953 46.9152 30.1055 46.513C30.6211 47.0217 31.1602 47.5067 31.6992 47.9799C36.7148 52.3332 41.6719 54.0959 44.7305 52.3096C47.8945 50.4641 48.9258 44.8687 47.5898 38.0547C47.4844 37.5342 47.3672 37.0019 47.2383 36.4577C47.6133 36.3513 47.9766 36.233 48.3398 36.1147C55.1016 33.8552 60 30.1998 60 26.4498C60 22.8654 55.3828 19.3874 49.0078 17.1753ZM33.1523 7.13185C37.5117 3.29901 41.5781 1.79664 43.4297 2.87314C45.4102 4.02063 46.1719 8.65788 44.9297 14.7502C44.8477 15.1524 44.7656 15.5428 44.6602 15.9332C42.0586 15.3417 39.4219 14.9158 36.7734 14.6792C35.25 12.4789 33.5859 10.3732 31.7813 8.39763C32.2383 7.95993 32.6836 7.54589 33.1523 7.13185ZM19.5937 32.5894C20.1914 33.6186 20.8008 34.6478 21.4453 35.6533C19.6172 35.4522 17.8008 35.1565 16.0078 34.7661C16.5234 33.0626 17.168 31.3 17.918 29.5019C18.457 30.5429 19.0078 31.5721 19.5937 32.5894ZM16.043 18.3583C17.7305 17.9797 19.5234 17.6721 21.3867 17.4355C20.7656 18.4174 20.1563 19.4229 19.582 20.4403C19.0078 21.4458 18.4453 22.475 17.918 23.516C17.1797 21.7534 16.5586 20.0262 16.043 18.3583ZM19.2539 26.5089C20.0273 24.8764 20.8711 23.2794 21.7617 21.7061C22.6523 20.1327 23.6133 18.6067 24.6211 17.1043C26.3789 16.9742 28.1719 16.9032 30 16.9032C31.8281 16.9032 33.6328 16.9742 35.3789 17.1043C36.375 18.5949 37.3242 20.1209 38.2266 21.6824C39.1289 23.2439 39.9727 24.8409 40.7695 26.4616C39.9844 28.0941 39.1406 29.703 38.2383 31.2881C37.3477 32.8615 36.3984 34.3875 35.4023 35.9017C33.6563 36.0319 31.8398 36.091 30 36.091C28.1602 36.091 26.3789 36.0319 24.6562 35.9254C23.6367 34.423 22.6758 32.8852 21.7734 31.3118C20.8711 29.7385 20.0391 28.1414 19.2539 26.5089ZM40.418 32.5658C41.0156 31.5247 41.5781 30.4719 42.1289 29.4072C42.8789 31.1225 43.5352 32.8615 44.1094 34.6478C42.293 35.0618 40.4531 35.3812 38.6016 35.5942C39.2344 34.6005 39.832 33.5831 40.418 32.5658ZM42.1055 23.516C41.5547 22.475 40.9922 21.434 40.4062 20.4166C39.832 19.4111 39.2344 18.4174 38.6133 17.4355C40.5 17.6721 42.3047 17.9915 43.9922 18.3819C43.4531 20.1327 42.8203 21.8362 42.1055 23.516ZM30.0234 10.2076C31.2539 11.5562 32.4141 12.9757 33.4922 14.4426C31.1719 14.3361 28.8398 14.3361 26.5195 14.4426C27.668 12.9166 28.8516 11.497 30.0234 10.2076ZM16.4297 2.95595C18.3984 1.79664 22.7695 3.4528 27.375 7.56955C27.668 7.8298 27.9609 8.11371 28.2656 8.39763C26.4492 10.3732 24.7734 12.4789 23.2383 14.6792C20.5898 14.9158 17.9648 15.3298 15.3633 15.9095C15.2109 15.3062 15.082 14.691 14.9531 14.0759C13.8516 8.35031 14.5781 4.03246 16.4297 2.95595ZM13.5586 34.1391C13.0664 33.9972 12.5859 33.8434 12.1055 33.6778C9.60938 32.8852 6.77344 31.6312 4.72266 29.9869C3.53906 29.1588 2.74219 27.8812 2.51953 26.4498C2.51953 24.2849 6.22266 21.5168 11.5664 19.6359C12.2344 19.3993 12.9141 19.1863 13.5938 18.9852C14.3906 21.5523 15.3516 24.072 16.4648 26.5089C15.3398 28.9814 14.3672 31.5366 13.5586 34.1391ZM27.2227 45.7322C25.2891 47.5185 23.0508 48.9381 20.6133 49.9081C19.3125 50.5351 17.8125 50.5943 16.4766 50.0619C14.6133 48.9736 13.8398 44.7977 14.8945 39.1786C15.0234 38.5161 15.1641 37.8536 15.3281 37.203C17.9531 37.7708 20.6016 38.1612 23.2852 38.3623C24.832 40.5745 26.5312 42.692 28.3477 44.6794C27.9727 45.0461 27.5977 45.401 27.2227 45.7322ZM30.0937 42.8576C28.8984 41.5563 27.7031 40.1131 26.543 38.5634C27.668 38.6107 28.8281 38.6344 30 38.6344C31.207 38.6344 32.3906 38.6107 33.5625 38.5516C32.4844 40.054 31.3242 41.4854 30.0937 42.8576ZM45.4102 46.4065C45.3047 47.8498 44.6016 49.1983 43.4766 50.1092C41.6133 51.1976 37.6406 49.778 33.3516 46.0635C32.8594 45.6376 32.3672 45.1762 31.8633 44.7031C33.6562 42.7038 35.3086 40.5863 36.8086 38.3623C39.4922 38.1376 42.1641 37.7235 44.8008 37.1202C44.918 37.6052 45.0234 38.0902 45.1172 38.5634C45.6914 41.1186 45.7852 43.7803 45.4102 46.4065ZM47.543 33.6896C47.2148 33.796 46.8867 33.9025 46.5469 33.9972C45.7266 31.4183 44.7188 28.8985 43.5586 26.4498C44.6836 24.0365 45.6328 21.5523 46.4297 19.0089C47.0391 19.1863 47.625 19.3756 48.1875 19.5649C53.6484 21.4576 57.4805 24.2731 57.4805 26.4261C57.4805 28.7448 53.3906 31.7377 47.543 33.6896ZM30 31.9151C32.9648 31.9151 35.3672 29.49 35.3672 26.4971C35.3672 23.5042 32.9648 21.0791 30 21.0791C27.0352 21.0791 24.6328 23.5042 24.6328 26.4971C24.6328 29.49 27.0352 31.9151 30 31.9151Z"
-                  fill="white"
-                />
-              </svg>
-              <p>react</p>
-            </div>
             <div class="box">
               <svg
                 width="60"
@@ -275,6 +257,21 @@
               </svg>
 
               <p>typescript</p>
+            </div>
+            <div class="box">
+              <svg
+                width="60"
+                height="53"
+                viewBox="0 0 60 53"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M49.0078 17.1753C48.375 16.9623 47.7422 16.7612 47.1094 16.572C47.2148 16.1343 47.3086 15.6966 47.4023 15.2589C48.8438 8.20835 47.8945 2.54191 44.6953 0.672815C41.6133 -1.11347 36.5859 0.743794 31.5 5.21543C30.9961 5.65313 30.5039 6.11449 30.0352 6.57585C29.7187 6.26828 29.3906 5.9607 29.0625 5.66496C23.7305 0.885749 18.3867 -1.1253 15.1875 0.755623C12.1172 2.55374 11.2031 7.88895 12.4922 14.5609C12.6211 15.2234 12.7617 15.874 12.9258 16.5365C12.1758 16.7494 11.4375 16.986 10.7461 17.2344C4.48828 19.4229 0 22.8772 0 26.4498C0 30.1407 4.78125 33.8434 11.2852 36.091C11.8125 36.2685 12.3398 36.4459 12.8789 36.5997C12.7031 37.3095 12.5508 38.0074 12.4102 38.729C11.1797 45.2945 12.1406 50.4996 15.2109 52.2859C18.375 54.1313 23.6953 52.2386 28.875 47.6605C29.2852 47.2938 29.6953 46.9152 30.1055 46.513C30.6211 47.0217 31.1602 47.5067 31.6992 47.9799C36.7148 52.3332 41.6719 54.0959 44.7305 52.3096C47.8945 50.4641 48.9258 44.8687 47.5898 38.0547C47.4844 37.5342 47.3672 37.0019 47.2383 36.4577C47.6133 36.3513 47.9766 36.233 48.3398 36.1147C55.1016 33.8552 60 30.1998 60 26.4498C60 22.8654 55.3828 19.3874 49.0078 17.1753ZM33.1523 7.13185C37.5117 3.29901 41.5781 1.79664 43.4297 2.87314C45.4102 4.02063 46.1719 8.65788 44.9297 14.7502C44.8477 15.1524 44.7656 15.5428 44.6602 15.9332C42.0586 15.3417 39.4219 14.9158 36.7734 14.6792C35.25 12.4789 33.5859 10.3732 31.7813 8.39763C32.2383 7.95993 32.6836 7.54589 33.1523 7.13185ZM19.5937 32.5894C20.1914 33.6186 20.8008 34.6478 21.4453 35.6533C19.6172 35.4522 17.8008 35.1565 16.0078 34.7661C16.5234 33.0626 17.168 31.3 17.918 29.5019C18.457 30.5429 19.0078 31.5721 19.5937 32.5894ZM16.043 18.3583C17.7305 17.9797 19.5234 17.6721 21.3867 17.4355C20.7656 18.4174 20.1563 19.4229 19.582 20.4403C19.0078 21.4458 18.4453 22.475 17.918 23.516C17.1797 21.7534 16.5586 20.0262 16.043 18.3583ZM19.2539 26.5089C20.0273 24.8764 20.8711 23.2794 21.7617 21.7061C22.6523 20.1327 23.6133 18.6067 24.6211 17.1043C26.3789 16.9742 28.1719 16.9032 30 16.9032C31.8281 16.9032 33.6328 16.9742 35.3789 17.1043C36.375 18.5949 37.3242 20.1209 38.2266 21.6824C39.1289 23.2439 39.9727 24.8409 40.7695 26.4616C39.9844 28.0941 39.1406 29.703 38.2383 31.2881C37.3477 32.8615 36.3984 34.3875 35.4023 35.9017C33.6563 36.0319 31.8398 36.091 30 36.091C28.1602 36.091 26.3789 36.0319 24.6562 35.9254C23.6367 34.423 22.6758 32.8852 21.7734 31.3118C20.8711 29.7385 20.0391 28.1414 19.2539 26.5089ZM40.418 32.5658C41.0156 31.5247 41.5781 30.4719 42.1289 29.4072C42.8789 31.1225 43.5352 32.8615 44.1094 34.6478C42.293 35.0618 40.4531 35.3812 38.6016 35.5942C39.2344 34.6005 39.832 33.5831 40.418 32.5658ZM42.1055 23.516C41.5547 22.475 40.9922 21.434 40.4062 20.4166C39.832 19.4111 39.2344 18.4174 38.6133 17.4355C40.5 17.6721 42.3047 17.9915 43.9922 18.3819C43.4531 20.1327 42.8203 21.8362 42.1055 23.516ZM30.0234 10.2076C31.2539 11.5562 32.4141 12.9757 33.4922 14.4426C31.1719 14.3361 28.8398 14.3361 26.5195 14.4426C27.668 12.9166 28.8516 11.497 30.0234 10.2076ZM16.4297 2.95595C18.3984 1.79664 22.7695 3.4528 27.375 7.56955C27.668 7.8298 27.9609 8.11371 28.2656 8.39763C26.4492 10.3732 24.7734 12.4789 23.2383 14.6792C20.5898 14.9158 17.9648 15.3298 15.3633 15.9095C15.2109 15.3062 15.082 14.691 14.9531 14.0759C13.8516 8.35031 14.5781 4.03246 16.4297 2.95595ZM13.5586 34.1391C13.0664 33.9972 12.5859 33.8434 12.1055 33.6778C9.60938 32.8852 6.77344 31.6312 4.72266 29.9869C3.53906 29.1588 2.74219 27.8812 2.51953 26.4498C2.51953 24.2849 6.22266 21.5168 11.5664 19.6359C12.2344 19.3993 12.9141 19.1863 13.5938 18.9852C14.3906 21.5523 15.3516 24.072 16.4648 26.5089C15.3398 28.9814 14.3672 31.5366 13.5586 34.1391ZM27.2227 45.7322C25.2891 47.5185 23.0508 48.9381 20.6133 49.9081C19.3125 50.5351 17.8125 50.5943 16.4766 50.0619C14.6133 48.9736 13.8398 44.7977 14.8945 39.1786C15.0234 38.5161 15.1641 37.8536 15.3281 37.203C17.9531 37.7708 20.6016 38.1612 23.2852 38.3623C24.832 40.5745 26.5312 42.692 28.3477 44.6794C27.9727 45.0461 27.5977 45.401 27.2227 45.7322ZM30.0937 42.8576C28.8984 41.5563 27.7031 40.1131 26.543 38.5634C27.668 38.6107 28.8281 38.6344 30 38.6344C31.207 38.6344 32.3906 38.6107 33.5625 38.5516C32.4844 40.054 31.3242 41.4854 30.0937 42.8576ZM45.4102 46.4065C45.3047 47.8498 44.6016 49.1983 43.4766 50.1092C41.6133 51.1976 37.6406 49.778 33.3516 46.0635C32.8594 45.6376 32.3672 45.1762 31.8633 44.7031C33.6562 42.7038 35.3086 40.5863 36.8086 38.3623C39.4922 38.1376 42.1641 37.7235 44.8008 37.1202C44.918 37.6052 45.0234 38.0902 45.1172 38.5634C45.6914 41.1186 45.7852 43.7803 45.4102 46.4065ZM47.543 33.6896C47.2148 33.796 46.8867 33.9025 46.5469 33.9972C45.7266 31.4183 44.7188 28.8985 43.5586 26.4498C44.6836 24.0365 45.6328 21.5523 46.4297 19.0089C47.0391 19.1863 47.625 19.3756 48.1875 19.5649C53.6484 21.4576 57.4805 24.2731 57.4805 26.4261C57.4805 28.7448 53.3906 31.7377 47.543 33.6896ZM30 31.9151C32.9648 31.9151 35.3672 29.49 35.3672 26.4971C35.3672 23.5042 32.9648 21.0791 30 21.0791C27.0352 21.0791 24.6328 23.5042 24.6328 26.4971C24.6328 29.49 27.0352 31.9151 30 31.9151Z"
+                  fill="white"
+                />
+              </svg>
+              <p>react</p>
             </div>
             <div class="box">
               <svg
@@ -380,100 +377,123 @@
     </section>
 
     <section
-      class="projects mt-40 w-screen flex flex-col h-full mb-40 min-h-[350vh] md:min-h-[200vh] lg:min-h-[150vh]"
+      class="projects mt-40 w-screen flex flex-col items-center h-full mb-10 min-h-[100vh]"
     >
       <h1 class="text-8xl text-center mb-20 text-anim">Projects</h1>
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-[50vw] gap-5 px-5"
-      >
+      <div class="w-[70%] flex flex-col">
+        <!-- class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-[50vw] gap-5 px-5" -->
         <a
-          class="project"
+          href="https://turtlejs-tau.vercel.app/"
+          target="_blank"
+          class="project-item group relative hover:z-[100] flex flex-col w-full hover:scale-105 transition-all"
+          >
+          
+          <div class="separator w-full h-[1px] bg-gray-400 my-4"></div>
+          <div class="project-name text-md">TurtleJS</div>
+          <div class="project-detail text-sm text-gray-400">
+            a sandbox to make generative art fast with a simple language
+          </div>
+          <div
+            class="project-hover absolute top-0 left-0 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+          >
+            <img
+              src="/projects/turtle.png"
+              class="object-cover rounded-2xl w-[50vw] shadow-2xl"
+            />
+          </div>
+          <div class="separator w-full h-[1px] bg-gray-400 my-4"></div>
+        </a>
+        <a
           href="https://github.com/hasan-bro-coder/Pagecord"
-          target="_blank"
+          class="project-item group relative hover:z-[100] flex flex-col w-full hover:scale-105 transition-all"
         >
-          <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-4xl">Pagecord</h1>
-            <p>fast discord clone</p>
-            <div class="flex gap-4 flex-wrap">
-              <span>vue</span>
-              <span>Node.js</span>
-              <span>supabase</span>
-              <span>socket.io</span>
-            </div>
+          <div class="project-name text-md">Pagecord</div>
+          <div class="project-detail text-sm text-gray-400">
+            a fast discord clone
           </div>
-          <img
-            loading="lazy"
-            src="/projects/pagecord.png"
-            alt=""
-            class="object-cover rounded-2xl info"
-          />
-        </a>
-        <a
-          class="project"
-          href="https://github.com/hasan-bro-coder/CodeNote"
-          target="_blank"
-        >
-          <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-4xl">Bro Notes</h1>
-            <p>bro notes is a minimal md note app</p>
-            <div class="flex gap-4 flex-wrap">
-              <span>vue</span>
-              <span>markdown</span>
-              <span>typescript</span>
-            </div>
-          </div>
-          <img
-            loading="lazy"
-            src="/projects/bronotes.png"
-            alt=""
-            class="object-cover rounded-2xl info"
-          />
-        </a>
-        <a
-          class="project"
-          href="https://github.com/hasan-bro-coder/Hasan.com"
-          target="_blank"
-        >
-          <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-4xl">Portfolio</h1>
-            <p>my old Portfolio made in 2022</p>
-            <div class="flex gap-4 flex-wrap">
-              <span>html</span>
-              <span>css</span>
-              <span>javascript</span>
-              <span>gsap</span>
-            </div>
-          </div>
-          <img
-            loading="lazy"
-            src="/projects/portfolio.png"
-            alt=""
-            class="object-cover rounded-2xl info"
-          />
-        </a>
-        <a
-          class="project"
-          href="https://github.com/hasan-bro-coder/Smartoutfit"
-          target="_blank"
-        >
-          <div class="techs flex flex-col gap-5 justify-start p-5">
-            <h1 class="text-4xl">Smartoutfit</h1>
-            <p>ecommerce site for a clothing brand</p>
-            <div class="flex gap-4 flex-wrap">
-              <span>vue</span>
-              <span>supabase</span>
-              <span>stripe</span>
-              <span>aws</span>
-            </div>
-          </div>
-          <img
-            loading="lazy"
-            src="/projects/smartoutfit.png"
-            alt=""
-            class="object-cover rounded-2xl info"
-          />
-        </a>
+          <div class="separator w-full h-[1px] bg-gray-400 my-4"></div>
 
+          <div
+            class="project-hover absolute top-0 left-0 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+          >
+            <img
+              src="/projects/pagecord.png"
+              class="object-cover rounded-2xl w-[50vw] shadow-2xl"
+            />
+          </div>
+        </a>
+         <a
+          href="https://github.com/hasan-bro-coder/CodeNote"
+          class="project-item group relative hover:z-[100] flex flex-col w-full hover:scale-105 transition-all"
+        >
+          <div class="project-name text-md">Bro Notes</div>
+          <div class="project-detail text-sm text-gray-400">
+            bro notes is a minimal md note app
+          </div>
+          <div class="separator w-full h-[1px] bg-gray-400 my-4"></div>
+
+          <div
+            class="project-hover absolute top-0 left-0 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+          >
+            <img
+              src="/projects/bronotes.png"
+              class="object-cover rounded-2xl w-[50vw] shadow-2xl"
+            />
+          </div>
+        </a>
+        <a
+          href="https://github.com/hasan-bro-coder/Hasan.com"
+          class="project-item group relative hover:z-[100] flex flex-col w-full hover:scale-105 transition-all"
+        >
+          <div class="project-name text-md">Portfolio</div>
+          <div class="project-detail text-sm text-gray-400">
+            my old Portfolio made in 2022
+          </div>
+          <div class="separator w-full h-[1px] bg-gray-400 my-4"></div>
+
+          <div
+            class="project-hover absolute top-0 left-0 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+          >
+            <img
+              src="/projects/portfolio.png"
+              class="object-cover rounded-2xl w-[50vw] shadow-2xl"
+            />
+          </div>
+        </a>
+        <a
+          href="https://github.com/hasan-bro-coder/bro-lang"
+          class="project-item group relative hover:z-[100] flex flex-col w-full hover:scale-105 transition-all"
+        >
+          <div class="project-name text-md">Brolang</div>
+          <div class="project-detail text-sm text-gray-400">
+            a custom programming language
+          </div>
+          <div class="separator w-full h-[1px] bg-gray-400 my-4"></div>
+
+          <div
+            class="project-hover absolute top-0 left-0 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+          >
+           
+          </div>
+        </a>
+        <a
+          href="https://github.com/hasan-bro-coder/ascii"
+          class="project-item group relative hover:z-[100] flex flex-col w-full hover:scale-105 transition-all"
+        >
+          <div class="project-name text-md">ascii</div>
+          <div class="project-detail text-sm text-gray-400">
+            ascii art generator
+          </div>
+          <div class="separator w-full h-[1px] bg-gray-400 my-4"></div>
+
+          <div
+            class="project-hover absolute top-0 left-0 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+          >
+           
+          </div>
+        </a>
+        
+       <!--
         <a
           class="project md:inline-block hidden"
           href="https://github.com/hasan-bro-coder/bro-lang"
@@ -512,11 +532,11 @@
             alt=""
             class="object-cover rounded-2xl info"
           />
-        </a>
+        </a> -->
       </div>
     </section>
 
-    <section class="contact w-screen min-h-screen mt-80">
+    <section class="contact w-screen min-h-screen mt-10">
       <h1 class="text-8xl text-center mb-20 text-anim">Contact me</h1>
       <div class="sm:grid sm:grid-cols-2 flex flex-col gap-20">
         <div class="flex items-center justify-center">

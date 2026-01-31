@@ -34,6 +34,7 @@
   /* left: 50%; */
   /* top: 50%; */
   z-index: 5;
+  touch-action: pan-y
   /* transform: translate(-50%, -50%); */
 }
 

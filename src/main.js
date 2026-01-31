@@ -18,9 +18,9 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
-// let split = SplitText.create("main .name", {
-//   type: "chars",
-// });
+let split = SplitText.create("main .name", {
+  type: "chars",
+});
 
 document.querySelector(
   ".footer-text"
@@ -34,6 +34,7 @@ gsap.to(".screen", {
   y: -window.innerHeight * 2,
 });
 
+export const Gsap = gsap;
 function addScrollSkew(el, options = {}) {
   let lastScrollY = window.scrollY;
   let ticking = false;
