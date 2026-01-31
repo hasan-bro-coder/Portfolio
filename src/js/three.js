@@ -10,10 +10,14 @@ import {
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-// const isMobile =
-//         /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-//           navigator.userAgent,
-//         );
+const isMobile =
+        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent,
+        );
+if (!isMobile){
+  document.querySelector(".touch-place").remove()
+}
+
 const scene = new Scene();
 const camera = new PerspectiveCamera(
   25,
@@ -92,8 +96,7 @@ function updateSphereSize() {
   sphere.geometry = newGeometry;
 }
 
-
-updateSphereSize();
+window.addEventListener("load",()=>updateSphereSize());
 
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
