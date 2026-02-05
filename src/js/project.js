@@ -1,4 +1,4 @@
-import {gsap} from "gsap";
+import gsap from "gsap";
 
 
 // const nodes = [].slice.call(document.querySelectorAll(".project"), 0);
@@ -44,24 +44,42 @@ import {gsap} from "gsap";
 const items = document.querySelectorAll('.project-item');
 
 items.forEach(item => {
-  const image = item.querySelector('.project-hover');
+  const container = item.querySelector('.project-hover');
+  
+  // 1. Kill any existing tweens on the container when starting
+  // to prevent "stuck" states from previous interactions
+  item.addEventListener('mouseenter', () => {
+    gsap.killTweensOf(container); 
+    gsap.fromTo(container, 
+      { scale: 0, opacity: 0 },
+      { 
+        scale: 1, 
+        opacity: 1, 
+        duration: 0.4, 
+        ease: "back.out(1.7)",
+        overwrite: "auto" // Automatically handles conflicting animations
+      }
+    );
+  });
 
   item.addEventListener('mousemove', (e) => {
-    // getBoundingClientRect gets the element's position relative to the viewport
     const rect = item.getBoundingClientRect();
-    
-    // Calculate position relative to the project-item container
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = e.clientX - rect.left + 20;
+    const y = e.clientY - rect.top + 20;
 
-    // Apply the transform
-    // Added a slight offset (20px) so it doesn't sit directly under the cursor
-    image.style.transform = `translate(${x + 20}px, ${y + 20}px)`;
-    image.style.opacity = '1';
+    // Use gsap.set for movement so it doesn't try to "animate" 
+    // to a position that is already outdated by the time it gets there
+    gsap.set(container, { x, y });
   });
 
   item.addEventListener('mouseleave', () => {
-    image.style.opacity = '0';
+    gsap.to(container, {
+      scale: 0,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.in",
+      overwrite: "auto"
+    });
   });
 });
 
